@@ -32,7 +32,7 @@ const Navbar = () => {
               Why Kicket
             </NavLink>
             <NavLink
-              to="/service-1"
+              to="/service/1"
               className={({ isActive }) =>
                 `transition-colors ${isActive ? "text-[#FFC019]" : ""}`
               }
@@ -40,7 +40,7 @@ const Navbar = () => {
               Service 1
             </NavLink>
             <NavLink
-              to="/service-2"
+              to="/service/2"
               className={({ isActive }) =>
                 `transition-colors ${isActive ? "text-[#FFC019]" : ""}`
               }
@@ -99,7 +99,7 @@ const Navbar = () => {
                   Why Kicket
                 </NavLink>
                 <NavLink
-                  to="/service-1"
+                  to="/service/1"
                   className={({ isActive }) =>
                     `transition-colors ${isActive ? "text-[#FFC019]" : ""}`
                   }
@@ -107,7 +107,7 @@ const Navbar = () => {
                   Service 1
                 </NavLink>
                 <NavLink
-                  to="/service-2"
+                  to="/service/2"
                   className={({ isActive }) =>
                     `transition-colors ${isActive ? "text-[#FFC019]" : ""}`
                   }
