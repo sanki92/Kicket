@@ -52,7 +52,7 @@ const Stories = ({ title = "Success Stories", isPhone, data, dir }) => {
           className="h-[32rem] smM:h-[27rem] bg-cover bg-center rounded-3xl"
           {...settings}
         >
-          {data.map((e) => (
+          {data?.map((e) => (
             <div className="bg-[#252525] h-[32rem] smM:h-[27rem] max-w-[25rem] flex flex-col space-y-5 p-3 text-white text-lg border border-white rounded-xl border-opacity-15">
               <div className="flex items-center gap-x-10">
                 <img
