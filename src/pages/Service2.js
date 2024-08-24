@@ -7,7 +7,7 @@ import Stories from "../components/WhyKicket/Stories";
 import ourService1phone from "../assets/our-service-phone.png";
 
 import Experience from "../components/Experience";
-const Service1 = () => {
+const Service2 = () => {
   const [isPhone, setIsPhone] = useState(false);
 
   useEffect(() => {
@@ -167,4 +167,4 @@ const Service1 = () => {
   );
 };
 
-export default Service1;
+export default Service2;
