@@ -3,18 +3,20 @@ import { NavLink } from "react-router-dom";
 import logo from "../assets/logo.png";
 import menuIcon from "../assets/menuIcon.png";
 import { RxCross2 } from "react-icons/rx";
+import RequestDemo from "./RequestDemo";
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
+  const [requestDemo, setRequestDemo] = useState(false);
   return (
     <div className="w-full flex justify-center fixed z-50">
       <div className="py-3 px-3 my-12 bg-gray-800 bg-opacity-45 backdrop-blur-md text-white border rounded-[100px] text-xl w-[85%] lgM:w-[95%] mgM:hidden mx-auto">
-        <ul className="flex justify-between">
+        <ul className="flex justify-between xlM:text-[1.8vw]">
           <li className="flex justify-center items-center w-fit gap-x-3 text-xl">
             <img src={logo} className="w-[3.2rem] ml-5" />
             <p className="font-[750]">KICKET</p>
           </li>
-          <li className="flex items-center justify-between w-[70%]">
+          <li className="flex items-center justify-between w-[70%] lgM:w-[75%]">
             <NavLink
               to="/"
               className={({ isActive }) =>
@@ -56,15 +58,18 @@ const Navbar = () => {
               Contact
             </NavLink>
             <li>
-              <button className="w-[194px] h-[52px] rounded-[26px] bg-gradient-to-r from-[#ED4C75] to-[#973EFF] text-white">
+              <button
+                onClick={() => setRequestDemo(true)}
+                className="w-[194px] h-[52px] lgM:w-[160px] lgM:h-[48px] rounded-[26px] bg-gradient-to-r from-[#ED4C75] to-[#973EFF] text-white"
+              >
                 Request A Demo
               </button>
             </li>
           </li>
         </ul>
       </div>
-      <div className="hidden mgM:block w-screen">
-        <div className="my-10 flex justify-between px-7">
+      <div className="hidden mgM:block w-screen bg-gray-800 bg-opacity-45 backdrop-blur-md">
+        <div className="my-3 flex justify-between px-7">
           <img src={logo} className="w-[2.3rem] object-contain " />
           <div
             onClick={() => setOpen(true)}
@@ -76,7 +81,7 @@ const Navbar = () => {
 
         {open && (
           <div className="p-5 h-screen w-[22rem] fixed top-0 right-0 bg-gray-800 bg-opacity-45 backdrop-blur-md text-white rounded-s-3xl flex justify-end">
-            <div className="bg-white absolute right-3 top-3 rounded-full h-[3rem] w-[3rem] bg-opacity-10 flex items-center justify-center p-2">
+            <div className="bg-white absolute right-7 top-3 rounded-full h-[3rem] w-[3rem] bg-opacity-20 cursor-pointer flex items-center justify-center p-2">
               <RxCross2 onClick={() => setOpen(false)} className="text-2xl" />
             </div>
 
@@ -122,11 +127,19 @@ const Navbar = () => {
                 >
                   Contact
                 </NavLink>
+
+                <button
+                  onClick={() => setRequestDemo(true)}
+                  className="w-[194px] h-[52px] lgM:w-[160px] lgM:h-[48px] rounded-[26px] bg-gradient-to-r from-[#ED4C75] to-[#973EFF] text-white"
+                >
+                  Request A Demo
+                </button>
               </li>
             </ul>
           </div>
         )}
       </div>
+      {requestDemo && <RequestDemo setRequestDemo={setRequestDemo} />}
     </div>
   );
 };
