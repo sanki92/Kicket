@@ -118,12 +118,12 @@ const LandingPage = () => {
       {/* Our services */}
       <div
         style={{ backgroundImage: `url(${serviceBg})` }}
-        className="w-[85%] text-white mx-auto block relative z-20 mt-[8rem] smM:mt-[4rem] bg-[center] bg-no-repeat mgM:w-[95%]"
+        className="w-[85%] lgM:w-[90%] text-white mx-auto block relative z-20 mt-[8rem] smM:mt-[4rem] bg-[center] bg-no-repeat mgM:w-[95%]"
       >
         <h1 className=" text-[45px] font-[750] mb-12 smM:text-center smM:mb-6 smM:text-[7vw] smM:whitespace-nowrap">
           Our Services
         </h1>
-        <div className="flex mgM:flex-col justify-between items-center">
+        <div className="flex mgM:flex-col justify-between items-center lgM:mb-[5rem]">
           <img src={ourService1} className="z-10 smM:hidden" />
           <img src={ourService1phone} className="z-10 hidden smM:block" />
 
@@ -136,17 +136,17 @@ const LandingPage = () => {
               src={serviceVector1}
               className="absolute -left-10 -top-20 w-[50%] z-10 smM:w-[40%] smM:top-0"
             />
-            <h1 className="text-[35px] font-normal smM:text-[6vw] smM:whitespace-nowrap smM:mt-[5rem]">
+            <h1 className="text-[35px] font-normal smM:text-[6vw] mgM:mx-auto mgM:mt-5 smM:whitespace-nowrap smM:mt-[5rem]">
               Our Ticket Booking
             </h1>
-            <p className="w-[96%] text-right text-xl leading-[35px] smM:text-[4vw] smM:leading-[6vw]">
+            <p className="w-[96%] text-right text-xl mgM:text-center lgM:text-[2vw] lgM:leading-[3vw] leading-[35px] smM:text-[4vw] smM:leading-[6vw]">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
               eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
               enim ad minim veniam, quis nostrud exercitation ullamco laboris
               nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
               reprehenderit in voluptate velit esse cillum{" "}
             </p>
-            <button className="  smM:py-2 smM:px-[2rem] smM:text-[3.5vw] smM:leading-[6vw] py-4 px-[3rem] rounded-[50px] text-xl bg-gradient-to-r from-[#ED4C75] to-[#973EFF] text-white">
+            <button className="  smM:py-2 smM:px-[2rem] smM:text-[3.5vw] mgM:text-[2vw] mgM:px-[1.8rem] mgM:py-2 mgM:mx-auto smM:leading-[6vw] py-4 px-[3rem] rounded-[50px] text-xl bg-gradient-to-r from-[#ED4C75] to-[#973EFF] text-white">
               Know More
             </button>
           </div>
@@ -164,17 +164,17 @@ const LandingPage = () => {
               src={serviceVector2}
               className="absolute smM:right-0 smM:w-[40%] smM:top-0 -right-10 -top-20 w-[50%] z-0"
             />
-            <h1 className="text-[35px] font-normal  smM:text-[6vw] smM:whitespace-nowrap smM:mt-[5rem]">
+            <h1 className="text-[35px] font-normal  mgM:mx-auto mgM:mt-5 smM:text-[6vw] smM:whitespace-nowrap smM:mt-[5rem]">
               Our Ticket Booking
             </h1>
-            <p className="w-[96%] text-left text-xl leading-[35px]  smM:text-[4vw] smM:leading-[6vw]">
+            <p className="w-[96%] text-left text-xl  mgM:text-center  lgM:text-[2vw] lgM:leading-[3vw] leading-[35px]  smM:text-[4vw] smM:leading-[6vw]">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
               eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
               enim ad minim veniam, quis nostrud exercitation ullamco laboris
               nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
               reprehenderit in voluptate velit esse cillum{" "}
             </p>
-            <button className=" smM:py-2 smM:px-[2rem] smM:text-[3.5vw] smM:leading-[6vw] py-4 px-[3rem] rounded-[50px] text-xl bg-gradient-to-r from-[#ED4C75] to-[#973EFF] text-white">
+            <button className=" smM:py-2 smM:px-[2rem] smM:text-[3.5vw] mgM:text-[2vw] mgM:px-[1.8rem] mgM:py-2 mgM:mx-auto smM:leading-[6vw] py-4 px-[3rem] rounded-[50px] text-xl bg-gradient-to-r from-[#ED4C75] to-[#973EFF] text-white">
               Know More
             </button>
           </div>

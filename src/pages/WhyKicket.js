@@ -46,14 +46,14 @@ const WhyKicket = () => {
           <div className="w-full h-[10rem] smM:h-[5rem] bg-gradient-to-b from-black/0 to-[#252525]/100 absolute bottom-0"></div>
         </div>
 
-        <div className=" flex smM:flex-col text-white text-[20px] w-[85%] smM:w-[90%] mx-auto gap-x-14 mt-14">
-          <img src={aboutImg} className="smM:hidden" />
+        <div className=" flex lgM:flex-col lgM:items-center text-white  text-[20px] w-[85%] smM:w-[90%] mx-auto gap-x-14 mt-14">
+          <img src={aboutImg} className="smM:hidden w-[30rem]" />
           <img src={ourService1phone} className="hidden smM:block" />
 
 
-          <div className="flex flex-col justify-center gap-y-5">
+          <div className="flex flex-col justify-center gap-y-5 lgM:items-center">
             <h1 className="text-white font-[750] text-[45px] smM:text-[7vw] smM:whitespace-nowrap smM:text-center smM:mt-3">About Kicket</h1>
-            <p className="leading-[35px]  smM:text-[4vw] smM:leading-[6vw]">
+            <p className="leading-[35px]  smM:text-[4vw] smM:leading-[6vw] lgM:text-[2vw] lgM:leading-[3vw]">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
               eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
               enim ad minim veniam, quis nostrud exercitation ullamco laboris
@@ -67,12 +67,12 @@ const WhyKicket = () => {
 
         <Stories data={stories} dir={"stories"} isPhone={isPhone}/>
 
-        <div className=" flex smM:flex-col text-white text-[20px] w-[85%] smM:w-[90%] mx-auto gap-x-14 mt-14">
-          <img src={aboutImg} className="smM:hidden" />
+        <div className=" flex lgM:flex-col lgM:items-center text-white text-[20px] w-[85%] smM:w-[90%] mx-auto gap-x-14 mt-14">
+          <img src={aboutImg} className="smM:hidden w-[30rem]" />
           <img src={ourService1phone} className="z-10 hidden smM:block" />
 
           <div className="flex flex-col justify-center gap-y-10">
-            <h1 className="text-white font-[750] text-[45px] smM:text-[7vw] smM:whitespace-nowrap smM:text-center smM:mt-5">Why Choose Us</h1>
+            <h1 className="text-white font-[750] lgM:text-center text-[45px] smM:text-[7vw] smM:whitespace-nowrap smM:text-center smM:mt-5">Why Choose Us</h1>
 
             <WhyChoose />
           </div>

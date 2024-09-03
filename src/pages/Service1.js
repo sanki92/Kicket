@@ -29,12 +29,12 @@ const Service1 = () => {
         <h1 className="text-[#FFC019] font-[750] text-[45px]">Service 1</h1>
         <div className="w-full h-[10rem] bg-gradient-to-b from-black/0 to-[#252525]/100 absolute bottom-0"></div>
       </div>
-      <div className=" flex smM:flex-col text-white text-[20px] w-[85%] mx-auto gap-x-14 mt-14">
-        <img src={aboutImg} className="smM:hidden" />
+      <div className=" flex lgM:flex-col lgM:items-center text-white text-[20px] w-[85%] mx-auto gap-x-14 mt-14">
+        <img src={aboutImg} className="smM:hidden w-[30rem]" />
         <img src={ourService1phone} className="z-10 hidden smM:block" />
 
         <div className="flex flex-col justify-center gap-y-5">
-          <h1 className="text-white font-[750] text-[45px] smM:text-[7vw] smM:whitespace-nowrap smM:mt-5 smM:text-center">
+          <h1 className="text-white font-[750] text-[45px] lgM:text-center smM:text-[7vw] smM:whitespace-nowrap smM:mt-5 smM:text-center">
             Service
           </h1>
           <p className="leading-[35px]  smM:text-[4vw] smM:leading-[6vw]">
@@ -65,7 +65,7 @@ const Service1 = () => {
             </h1>
           </div>
           <div className="flex items-center justify-center">
-            <div className="bg-[#363637] border border-[#D9D9D9] h-[15rem] w-[18rem] rounded-2xl flex items-center justify-center">
+            <div className="bg-[#363637] border border-[#D9D9D9] h-[15rem] w-[18rem] lgM:h-[13rem] lgM:w-[15rem] rounded-2xl flex items-center justify-center">
               <img src={ticket} />
             </div>
           </div>
