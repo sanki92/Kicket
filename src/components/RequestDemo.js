@@ -61,7 +61,6 @@ const RequestDemo = ({ setRequestDemo }) => {
             />
           </div>
         </div>
-
         <button className=" smM:py-2 w-fit mx-auto smM:px-[2rem] smM:text-[3.5vw] mgM:text-[2vw] mgM:px-[1.8rem] mgM:py-2 mgM:mx-auto smM:leading-[6vw] py-4 px-[3rem] rounded-[50px] text-xl bg-gradient-to-r from-[#ED4C75] to-[#973EFF] text-white">
           Request A Demo
         </button>
