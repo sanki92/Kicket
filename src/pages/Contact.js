@@ -54,8 +54,8 @@ const Contact = () => {
         <h1 className="text-[#FFC019] font-[750] text-[45px]">Contact</h1>
         <div className="w-full h-[10rem] bg-gradient-to-b from-black/0 to-[#252525]/100 absolute bottom-0"></div>
       </div>
-      <div className=" flex justify-center smM:flex-col text-white text-[20px] w-[85%] mx-auto gap-x-14 mt-14">
-        <img src={contact1} className="smM:hidden" />
+      <div className=" flex justify-center mgM:flex-col mgM:items-center text-white text-[20px] w-[85%] mx-auto gap-x-14 mt-14">
+        <img src={contact1} className="smM:hidden w-[30rem]" />
         <img src={ourService1phone} className="z-10 hidden smM:block" />
 
         <div className="flex flex-col justify-center gap-y-5">
