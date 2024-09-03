@@ -2,7 +2,11 @@
 module.exports = {
   content: ["./src/**/*.{html,js}"],
   theme: {
-    extend: {},
+    extend: {
+      animation: {
+        'slow-spin': 'spin 3s linear infinite', // Adjust the duration as needed
+      },
+    },
     screens:{
       //MIN WIDTH
       'sm': '640px',
@@ -24,8 +28,11 @@ module.exports = {
       '2xlM': {'max': '1535px'},
       // => @media (max-width: 1535px) { ... }
 
-      'xlM': {'max': '1279px'},
+      
       // => @media (max-width: 1279px) { ... }
+      'xlM': {'max': '1279px'},
+      
+      'mi-xlM': {'max':'1179px'},
 
       'lgM': {'max': '1023px'},
       // => @media (max-width: 1023px) { ... }
