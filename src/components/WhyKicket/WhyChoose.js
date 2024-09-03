@@ -21,7 +21,7 @@ export default function AccordionUsage() {
       >
         <AccordionSummary
         as="div"
-          expandIcon={<ExpandMoreIcon className="text-[#848484]" />}
+          expandIcon={<ExpandMoreIcon className="text-[#848484] mt-4" />}
           aria-controls="panel1-content"
           id="panel1-header"
           className={`${
@@ -45,7 +45,7 @@ export default function AccordionUsage() {
       >
         <AccordionSummary
         as="div"
-          expandIcon={<ExpandMoreIcon className="text-[#848484]" />}
+          expandIcon={<ExpandMoreIcon className="text-[#848484] mt-4" />}
           aria-controls="panel2-content"
           id="panel2-header"
           className={`${
@@ -69,7 +69,7 @@ export default function AccordionUsage() {
       >
         <AccordionSummary
         as="div"
-          expandIcon={<ExpandMoreIcon className="text-[#848484]" />}
+          expandIcon={<ExpandMoreIcon className="text-[#848484] mt-4" />}
           aria-controls="panel3-content"
           id="panel3-header"
           className={`${
@@ -93,7 +93,7 @@ export default function AccordionUsage() {
       >
         <AccordionSummary
         as="div"
-          expandIcon={<ExpandMoreIcon className="text-[#848484]" />}
+          expandIcon={<ExpandMoreIcon className="text-[#848484] mt-4" />}
           aria-controls="panel4-content"
           id="panel4-header"
           className={`${
@@ -117,7 +117,7 @@ export default function AccordionUsage() {
       >
         <AccordionSummary
         as="div"
-          expandIcon={<ExpandMoreIcon className="text-[#848484]" />}
+          expandIcon={<ExpandMoreIcon className="text-[#848484] mt-4" />}
           aria-controls="panel5-content"
           id="panel5-header"
           className={`${
