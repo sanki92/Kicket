@@ -11,8 +11,10 @@ const Layout = ({children}) => {
     <div>
       <Preloader/>
         <Navbar/>
-        
+        <div className='overflow-x-hidden'>
+
         {children}
+        </div>
         <div className='fixed bottom-10 z-30 left-0 w-[10rem]'>
           <LanguageToggle/>
         </div>

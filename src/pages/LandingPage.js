@@ -198,9 +198,9 @@ const LandingPage = () => {
           />
 
           <div className="h-fit w-[50%] smM:w-[95%] flex flex-col items-end justify-center smM:justify-normal gap-y-8 relative">
-            <div className="line-with-circle absolute -left-[13rem] z-0">
-              <div className="line"></div>
-              <div className="circle"></div>
+          <div class="line-with-circle absolute -left-[13rem] z-0">
+              <div class="line"></div>
+              <div class="circle"></div>
             </div>
             <img
               src={serviceVector1}
@@ -237,9 +237,9 @@ const LandingPage = () => {
           />
 
           <div className="h-fit w-[50%] smM:w-[95%] flex flex-col items-start justify-center smM:justify-normal gap-y-8 relative">
-            <div className="line-with-circle absolute -right-[13rem] z-0">
-              <div className="line"></div>
-              <div className="circle"></div>
+          <div class="line-with-circle absolute -right-[16rem] smM:left-0 smM:right-auto smM:rotate-90 smM:top-0 rotate-180 z-10">
+              <div class="line"></div>
+              <div class="circle"></div>
             </div>
             <img
               src={serviceVector2}
@@ -264,6 +264,7 @@ const LandingPage = () => {
           </div>
         </div>
       </div>
+      <SliderComponent serviceSnippet={serviceSnippet}/>
       <OurClients clients={clients} />
       <ClientTestimonial testimonials={testimonials} />
       <Experience />
