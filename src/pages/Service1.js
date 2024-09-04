@@ -5,8 +5,9 @@ import ticket from "../assets/service1/ticket 1.png";
 import Layout from "../components/Layout";
 import Stories from "../components/WhyKicket/Stories";
 import ourService1phone from "../assets/our-service-phone.png";
-
 import Experience from "../components/Experience";
+import Slider from "react-slick";
+
 const Service1 = () => {
   const [isPhone, setIsPhone] = useState(false);
 
@@ -20,6 +21,67 @@ const Service1 = () => {
       window.removeEventListener("resize", handleResize);
     };
   }, []);
+
+  const settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 3,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 3000,
+    arrows:false,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 1,
+        },
+      },
+      {
+        breakpoint: 767,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+        },
+      },
+    ],
+  };
+
+  const features = [
+    {
+      number: 1,
+      title: "Service 1",
+      description: "Description for service 1.",
+    },
+    {
+      number: 2,
+      title: "Service 2",
+      description: "Description for service 2.",
+    },
+    {
+      number: 3,
+      title: "Service 3",
+      description: "Description for service 3.",
+    },
+    {
+      number: 4,
+      title: "Service 4",
+      description: "Description for service 4.",
+    },
+    {
+      number: 5,
+      title: "Service 5",
+      description: "Description for service 5.",
+    },
+    {
+      number: 6,
+      title: "Service 6",
+      description: "Description for service 6.",
+    },
+  ];
+
   return (
     <Layout>
       <div
@@ -29,7 +91,8 @@ const Service1 = () => {
         <h1 className="text-[#FFC019] font-[750] text-[45px]">Service 1</h1>
         <div className="w-full h-[10rem] bg-gradient-to-b from-black/0 to-[#252525]/100 absolute bottom-0"></div>
       </div>
-      <div className=" flex lgM:flex-col lgM:items-center text-white text-[20px] w-[85%] mx-auto gap-x-14 mt-14">
+
+      <div className="flex lgM:flex-col lgM:items-center text-white text-[20px] w-[85%] mx-auto gap-x-14 mt-14">
         <img src={aboutImg} className="smM:hidden w-[30rem]" />
         <img src={ourService1phone} className="z-10 hidden smM:block" />
 
@@ -37,7 +100,7 @@ const Service1 = () => {
           <h1 className="text-white font-[750] text-[45px] lgM:text-center smM:text-[7vw] smM:whitespace-nowrap smM:mt-5 smM:text-center">
             Service
           </h1>
-          <p className="leading-[35px]  smM:text-[4vw] smM:leading-[6vw]">
+          <p className="leading-[35px] smM:text-[4vw] smM:leading-[6vw]">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
             eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
             ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
@@ -48,122 +111,61 @@ const Service1 = () => {
           </p>
         </div>
       </div>
+
       <div className="my-[5rem] mb-8">
-        <h1 className="text-white font-[750] text-[45px] text-center mb-5 smM:text-[7vw] smM:whitespace-nowrap smM:mt-5 smM:text-center">
+        <h1 className="text-white font-[750] text-[45px] text-center mb-10 smM:text-[7vw] smM:whitespace-nowrap smM:mt-5 smM:text-center">
           Key Features
         </h1>
-        <div className="smM:hidden grid grid-cols-3 smM:flex-row-reverse divide-white w-[85%] items-center mx-auto gap-y-10">
-          <div className="space-y-4 text-white">
-            <h1 className="text-[25px]">Service</h1>
-            <p className="text-[18px] text-[#D9D9D9]">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua.
-            </p>
-            <h1 className="relative  w-fit leading-[144px] px-14 text-[120px] text-[#4E4F4F] font-[750]">
-              1
-              <div className="absolute right-0 top-0 h-full w-[4px] bg-gradient-to-b from-[#ffc019] via-[#ed4c75] via-[#973eff] to-[#00d6cc]"></div>
-            </h1>
-          </div>
-          <div className="flex items-center justify-center">
-            <div className="bg-[#363637] border border-[#D9D9D9] h-[15rem] w-[18rem] lgM:h-[13rem] lgM:w-[15rem] rounded-2xl flex items-center justify-center">
-              <img src={ticket} />
-            </div>
-          </div>
-          <div className="space-y-4 text-white">
-            <h1 className="text-[25px]">Service</h1>
-            <p className="text-[18px] text-[#D9D9D9] smM:text-[4vw] smM:leading-[6vw]">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua.
-            </p>
-            <h1 className="relative  w-fit leading-[144px] px-14 text-[120px] text-[#4E4F4F] font-[750] ml-auto mr-10 ">
-              3
-              <div className="absolute right-0 top-0 h-full w-[4px] bg-gradient-to-b from-[#ffc019] via-[#ed4c75] via-[#973eff] to-[#00d6cc]"></div>
-            </h1>
-          </div>
-        </div>
-        <hr className="my-6 w-[85%] mx-auto border-[#848484] border-2" />
-        <div className="smM:hidden grid grid-cols-3 smM:grid-cols-1 divide-white w-[85%] items-center mx-auto gap-y-10">
-          <div className="flex items-center justify-center">
-            <div className="bg-[#363637] border border-[#D9D9D9] h-[15rem] w-[18rem] rounded-2xl flex items-center justify-center">
-              <img src={ticket} />
-            </div>
-          </div>
-          <div className="space-y-4 text-white flex flex-col justify-center items-center">
-            <h1 className="relative  w-fit leading-[144px] px-14 text-[120px] text-[#4E4F4F] font-[750]">
-              2
-              <div className="absolute right-0 top-0 h-full w-[4px] bg-gradient-to-b from-[#ffc019] via-[#ed4c75] via-[#973eff] to-[#00d6cc]"></div>
-            </h1>
-            <h1 className="text-[25px] w-full">Service</h1>
-            <p className="text-[18px] text-[#D9D9D9]">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua.
-            </p>
-          </div>
-          <div className="flex items-center justify-center">
-            <div className="bg-[#363637] border border-[#D9D9D9] h-[15rem] w-[18rem] rounded-2xl flex items-center justify-center">
-              <img src={ticket} />
-            </div>
-          </div>
-        </div>
+        <Slider {...settings} className="w-[85%] mx-auto">
+          {features.map((feature) => (
+            <>
+              {feature.number % 2 === 1 ? (
+                <div
+                  key={feature.number}
+                  className="text-white"
+                >
+                  <h2 className="text-[25px] text-center">{feature.title}</h2>
+                  <p className="text-[18px] text-[#D9D9D9] text-center">
+                    {feature.description}
+                  </p>
+                  <h1 className="relative w-fit leading-[144px] px-14 text-[120px] text-[#4E4F4F] font-[750] mx-auto">
+                    {feature.number}
+                    <div className="absolute right-0 top-0 h-full w-[4px] bg-gradient-to-b from-[#ffc019] via-[#ed4c75] via-[#973eff] to-[#00d6cc]"></div>
+                  </h1>
+                  <hr className="my-5 mt-[3.99rem]"/>
+                  <div className="flex justify-center">
+                    <div className="bg-[#363637] border border-[#D9D9D9] h-[15rem] w-[18rem] rounded-2xl flex items-center justify-center">
+                      <img src={ticket} alt={`ticket ${feature.number}`} />
+                    </div>
+                  </div>
+                </div>
+              ) : (
+                <div
+                  key={feature.number}
+                  className="text-white space-y-8"
+                >
+                  <div className="flex justify-center">
+                    <div className="bg-[#363637] border border-[#D9D9D9] h-[15rem] w-[18rem] rounded-2xl flex items-center justify-center">
+                      <img src={ticket} alt={`ticket ${feature.number}`} />
+                    </div>
+                  </div>
+                  <hr/>
 
-        <div className=" hidden smM:flex w-[90%] mx-auto items-center gap-x-10">
-          <div className="flex items-center justify-center">
-            <div className="bg-[#363637] border border-[#D9D9D9] h-[8rem] w-[6rem] rounded-2xl flex items-center justify-center">
-              <img src={ticket} className="w-14" />
-            </div>
-          </div>
-          <h1 className="relative  w-[6rem] h-fit flex items-center justify-center text-[15vw] text-[#4E4F4F] font-[750]">
-              1
-              <div className="absolute rounded-md right-0 bottom-0 w-full h-[4px] bg-gradient-to-r from-[#ffc019] via-[#ed4c75] via-[#973eff] to-[#00d6cc]"></div>
-            </h1>
-            <div className="w-[50%]">
-
-            <h1 className="text-white text-[4vw] text-right">Service</h1>
-            <p className="text-[3vw] leading-[5vw] text-right text-white">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua.
-            </p>
-            </div>
-        </div>
-        <div className=" hidden smM:flex w-[90%] smM:flex-row-reverse mx-auto items-center gap-x-10">
-          <div className="flex items-center justify-center">
-            <div className="bg-[#363637] border border-[#D9D9D9] h-[8rem] w-[6rem] rounded-2xl flex items-center justify-center">
-              <img src={ticket} className="w-14" />
-            </div>
-          </div>
-          <h1 className="relative  w-[6rem] h-fit flex items-center justify-center text-[15vw] text-[#4E4F4F] font-[750]">
-              2
-              <div className="absolute rounded-md right-0 bottom-0 w-full h-[4px] bg-gradient-to-r from-[#ffc019] via-[#ed4c75] via-[#973eff] to-[#00d6cc]"></div>
-            </h1>
-            <div className="w-[50%]">
-
-            <h1 className="text-white text-[4vw] text-left">Service</h1>
-            <p className="text-[3vw] leading-[5vw] text-left text-white">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua.
-            </p>
-            </div>
-        </div>
-        <div className=" hidden smM:flex w-[90%] mx-auto items-center gap-x-10">
-          <div className="flex items-center justify-center">
-            <div className="bg-[#363637] border border-[#D9D9D9] h-[8rem] w-[6rem] rounded-2xl flex items-center justify-center">
-              <img src={ticket} className="w-14" />
-            </div>
-          </div>
-          <h1 className="relative  w-[6rem] h-fit flex items-center justify-center text-[15vw] text-[#4E4F4F] font-[750]">
-              3
-              <div className="absolute rounded-md right-0 bottom-0 w-full h-[4px] bg-gradient-to-r from-[#ffc019] via-[#ed4c75] via-[#973eff] to-[#00d6cc]"></div>
-            </h1>
-            <div className="w-[50%]">
-
-            <h1 className="text-white text-[4vw] text-right">Service</h1>
-            <p className="text-[3vw] leading-[5vw] text-right text-white">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua.
-            </p>
-            </div>
-        </div>
+                  <h1 className="relative w-fit leading-[144px] px-14 text-[120px] text-[#4E4F4F] font-[750] mx-auto">
+                    {feature.number}
+                    <div className="absolute right-0 top-0 h-full w-[4px] bg-gradient-to-b from-[#ffc019] via-[#ed4c75] via-[#973eff] to-[#00d6cc]"></div>
+                  </h1>
+                  <h2 className="text-[25px] text-center">{feature.title}</h2>
+                  <p className="text-[18px] text-[#D9D9D9] text-center">
+                    {feature.description}
+                  </p>
+                </div>
+              )}
+            </>
+          ))}
+        </Slider>
       </div>
+
       <Stories isPhone={isPhone} title={"Case Studies"} />
       <Experience />
     </Layout>

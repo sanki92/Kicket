@@ -5,6 +5,9 @@ import WhyKicket from "./pages/WhyKicket";
 import Service1 from "./pages/Service1";
 import Service2 from "./pages/Service2";
 import Contact from "./pages/Contact";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+
 
 function App() {
   return (
