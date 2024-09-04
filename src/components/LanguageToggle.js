@@ -1,11 +1,12 @@
 import React, { useState } from "react";
+import { useLanguage } from "./LanguageContext";
 
 const LanguageToggle = () => {
   const [isEnglish, setIsEnglish] = useState(true);
-
-  const toggleLanguage = () => {
-    setIsEnglish(!isEnglish);
-  };
+  const {toggleLanguage, language } = useLanguage();
+  // const toggleLanguage = () => {
+  //   setIsEnglish(!isEnglish);
+  // };
 
   return (
     <div className="flex justify-center items-center mt-4">
@@ -15,7 +16,7 @@ const LanguageToggle = () => {
       >
         <div
           className={`absolute top-1/2 transform -translate-y-1/2 w-8 h-8 bg-white rounded-full shadow-md transition-transform duration-300 ease-in-out 
-            ${isEnglish ? "translate-x-1" : "translate-x-11"}`}
+            ${language==="en" ? "translate-x-1" : "translate-x-11"}`}
         ></div>
         <div className="absolute left-2 top-1/2 transform -translate-y-1/2 text-sm font-semibold text-gray-700">
           EN

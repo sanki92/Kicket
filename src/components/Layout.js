@@ -10,9 +10,9 @@ const Layout = ({children}) => {
       <Preloader/>
         <Navbar/>
         {children}
-        {/* <div className='fixed bottom-10 z-30 left-0 w-[10rem]'>
+        <div className='fixed bottom-10 z-30 left-0 w-[10rem]'>
           <LanguageToggle/>
-        </div> */}
+        </div>
         <Footer/>
     </div>
   )

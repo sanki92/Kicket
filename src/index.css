@@ -97,3 +97,15 @@ body {
   background-color: white !important; /* change color when active */
   margin: 0 0px 0 -13px !important;
 }
+
+/* Example CSS for RTL */
+[dir="rtl"] {
+  text-align: right;
+  direction: rtl;
+}
+
+/* Example CSS for LTR */
+[dir="ltr"] {
+  text-align: left;
+  direction: ltr;
+}

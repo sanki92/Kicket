@@ -7,11 +7,13 @@ import Service2 from "./pages/Service2";
 import Contact from "./pages/Contact";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import ScrollToTop from "./components/ScrollToTop";
 
 
 function App() {
   return (
     <Router>
+      <ScrollToTop/>
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="/why-kicket" element={<WhyKicket />} />

@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
 import logo from "../assets/logo.png";
+import { useLanguage } from "./LanguageContext";
 
 const Preloader = () => {
+  const { loading, setLoading } = useLanguage();
   const [close, setClose] = useState(true);
 
   useEffect(() => {
@@ -12,7 +14,7 @@ const Preloader = () => {
       setClose(false);
       // Re-enable scrolling when preloader disappears
       document.body.style.overflow = "auto";
-    }, 2000);
+    }, 3000);
 
     // Cleanup the timer and reset overflow if the component unmounts
     return () => {
