@@ -22,6 +22,28 @@ const LandingPage = () => {
   const [isPhone, setIsPhone] = useState(false);
   const [testimonials, setTestimonials] = useState([]);
   const [serviceSnippet, setServiceSnippet] = useState([]);
+  const [homeService, setHomeService] = useState([
+    {
+      en: {
+        title: "",
+        description: "",
+      },
+      ar: {
+        title: "",
+        description: "",
+      },
+    },
+    {
+      en: {
+        title: "",
+        description: "",
+      },
+      ar: {
+        title: "",
+        description: "",
+      },
+    },
+  ]);
   const [homeContent, setHomeContent] = useState({
     en: "",
     ar: "",
@@ -32,7 +54,6 @@ const LandingPage = () => {
   const fetchTestimonials = async () => {
     try {
       const response = await axiosConfig.get("/api/testimonial");
-      console.log("Testimonials data:", response.data);
       setTestimonials(response.data);
     } catch (error) {
       console.error("Error fetching testimonials data:", error);
@@ -42,7 +63,6 @@ const LandingPage = () => {
   const fetchHomeContent = async () => {
     try {
       const response = await axiosConfig.get("/api/service-snippets");
-      console.log("Home content data:", response.data); // Debugging line
       setServiceSnippet(response.data);
     } catch (error) {
       console.error("Error fetching home content data:", error);
@@ -52,7 +72,6 @@ const LandingPage = () => {
   const fetchClients = async () => {
     try {
       const response = await axiosConfig.get("/api/client");
-      console.log("Clients data:", response.data); // Debugging line
       setClients(response.data);
     } catch (error) {
       console.error("Error fetching clients data:", error);
@@ -63,14 +82,37 @@ const LandingPage = () => {
     try {
       setLoading(true);
       const response = await axiosConfig.get("/api/home-content");
-      console.log("Home details data:", response.data);
       setHomeContent({
         en: response.data[0].why_kicket,
         ar: response.data[0].arabic_why_kicket,
       });
     } catch (error) {
       console.error("Error fetching home details data:", error);
-    } finally{
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const fetchHomeService = async () => {
+    try {
+      setLoading(true);
+      const response = await axiosConfig.get("/api/service");
+      console.log("Home service data:", response.data);
+      const data = response.data.map((e) => ({
+        en: {
+          title: e.title,
+          description: e.description,
+        },
+        ar: {
+          title: e.arabic_title,
+          description: e.arabic_description,
+        },
+      }));
+      console.log("Data:", data);
+      setHomeService(data);
+    } catch (error) {
+      console.error("Error fetching home details data:", error);
+    } finally {
       setLoading(false);
     }
   };
@@ -79,6 +121,7 @@ const LandingPage = () => {
     fetchTestimonials();
     fetchHomeContent();
     fetchHomeDetails();
+    fetchHomeService();
     fetchClients();
 
     const handleResize = () => {
@@ -90,13 +133,6 @@ const LandingPage = () => {
       window.removeEventListener("resize", handleResize);
     };
   }, []);
-
-  useEffect(() => {
-    console.log(language, homeContent);
-    // if (homeContent[language]) {
-    //   setHomeContent(homeContent[language]);
-    // }
-  }, [language, homeContent]);
 
   return (
     <Layout>
@@ -122,8 +158,15 @@ const LandingPage = () => {
               KICKET
             </span>
           </h1>
-          <img src={bgVector} className="absolute left-0 w-[30%]" alt="Background Vector" />
-          <div dir={language === 'ar' ? 'rtl' : 'ltr'} className="h-fit pt-[8rem] smM:pt-[5rem] flex flex-col justify-center items-center gap-y-12">
+          <img
+            src={bgVector}
+            className="absolute left-0 w-[30%]"
+            alt="Background Vector"
+          />
+          <div
+            dir={language === "ar" ? "rtl" : "ltr"}
+            className="h-fit pt-[8rem] smM:pt-[5rem] flex flex-col justify-center items-center gap-y-12"
+          >
             <p className="text-white text-xl text-center w-[64%] mgM:w-[95%] mgM:text-start mx-auto leading-[35px] smM:text-[4vw] smM:leading-[6vw]">
               {homeContent[language]}
             </p>
@@ -143,8 +186,16 @@ const LandingPage = () => {
           Our Services
         </h1>
         <div className="flex mgM:flex-col justify-between items-center lgM:mb-[5rem]">
-          <img src={ourService1} className="z-10 smM:hidden" alt="Our Service 1" />
-          <img src={ourService1phone} className="z-10 hidden smM:block" alt="Our Service 1 (Phone)" />
+          <img
+            src={ourService1}
+            className="z-10 smM:hidden"
+            alt="Our Service 1"
+          />
+          <img
+            src={ourService1phone}
+            className="z-10 hidden smM:block"
+            alt="Our Service 1 (Phone)"
+          />
 
           <div className="h-fit w-[50%] smM:w-[95%] flex flex-col items-end justify-center smM:justify-normal gap-y-8 relative">
             <div className="line-with-circle absolute -left-[13rem] z-0">
@@ -156,15 +207,17 @@ const LandingPage = () => {
               className="absolute -left-10 -top-20 w-[50%] z-10 smM:w-[40%] smM:top-0"
               alt="Service Vector 1"
             />
-            <h1 className="text-[35px] font-normal smM:text-[6vw] mgM:mx-auto mgM:mt-5 smM:whitespace-nowrap smM:mt-[5rem]">
-              Our Ticket Booking
+            <h1
+              dir={language === "ar" ? "rtl" : "ltr"}
+              className="text-[35px] font-normal smM:text-[6vw] mgM:mx-auto mgM:mt-5 smM:whitespace-nowrap smM:mt-[5rem]"
+            >
+              {homeService[0][language].title}
             </h1>
-            <p className="w-[96%] text-right text-xl mgM:text-center lgM:text-[2vw] lgM:leading-[3vw] leading-[35px] smM:text-[4vw] smM:leading-[6vw]">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud exercitation ullamco laboris
-              nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-              reprehenderit in voluptate velit esse cillum.
+            <p
+              dir={language === "ar" ? "rtl" : "ltr"}
+              className="w-[96%] text-right text-xl mgM:text-center lgM:text-[2vw] lgM:leading-[3vw] leading-[35px] smM:text-[4vw] smM:leading-[6vw]"
+            >
+              {homeService[0][language].description}
             </p>
             <button className="smM:py-2 smM:px-[2rem] smM:text-[3.5vw] mgM:text-[2vw] mgM:px-[1.8rem] mgM:py-2 mgM:mx-auto smM:leading-[6vw] py-4 px-[3rem] rounded-[50px] text-xl bg-gradient-to-r from-[#ED4C75] to-[#973EFF] text-white">
               Know More
@@ -172,8 +225,16 @@ const LandingPage = () => {
           </div>
         </div>
         <div className="flex mgM:flex-col mgM:mt-10 flex-row-reverse justify-between items-center">
-          <img src={ourService2} className="z-10 smM:hidden" alt="Our Service 2" />
-          <img src={ourService2phone} className="z-10 hidden smM:block" alt="Our Service 2 (Phone)" />
+          <img
+            src={ourService2}
+            className="z-10 smM:hidden"
+            alt="Our Service 2"
+          />
+          <img
+            src={ourService2phone}
+            className="z-10 hidden smM:block"
+            alt="Our Service 2 (Phone)"
+          />
 
           <div className="h-fit w-[50%] smM:w-[95%] flex flex-col items-start justify-center smM:justify-normal gap-y-8 relative">
             <div className="line-with-circle absolute -right-[13rem] z-0">
@@ -185,15 +246,17 @@ const LandingPage = () => {
               className="absolute -right-10 -top-20 w-[50%] z-10 smM:w-[40%] smM:top-0"
               alt="Service Vector 2"
             />
-            <h1 className="text-[35px] font-normal smM:text-[6vw] mgM:mx-auto mgM:mt-5 smM:whitespace-nowrap smM:mt-[5rem]">
-              Our Customizable Solutions
+            <h1
+              dir={language === "ar" ? "rtl" : "ltr"}
+              className="text-[35px] font-normal smM:text-[6vw] mgM:mx-auto mgM:mt-5 smM:whitespace-nowrap smM:mt-[5rem]"
+            >
+              {homeService[1][language].title}
             </h1>
-            <p className="w-[96%] text-left text-xl mgM:text-center lgM:text-[2vw] lgM:leading-[3vw] leading-[35px] smM:text-[4vw] smM:leading-[6vw]">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud exercitation ullamco laboris
-              nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-              reprehenderit in voluptate velit esse cillum.
+            <p
+              dir={language === "ar" ? "rtl" : "ltr"}
+              className="w-[96%] text-left text-xl mgM:text-center lgM:text-[2vw] lgM:leading-[3vw] leading-[35px] smM:text-[4vw] smM:leading-[6vw]"
+            >
+              {homeService[1][language].description}
             </p>
             <button className="smM:py-2 smM:px-[2rem] smM:text-[3.5vw] mgM:text-[2vw] mgM:px-[1.8rem] mgM:py-2 mgM:mx-auto smM:leading-[6vw] py-4 px-[3rem] rounded-[50px] text-xl bg-gradient-to-r from-[#ED4C75] to-[#973EFF] text-white">
               Know More
@@ -201,7 +264,6 @@ const LandingPage = () => {
           </div>
         </div>
       </div>
-
       <OurClients clients={clients} />
       <ClientTestimonial testimonials={testimonials} />
       <Experience />

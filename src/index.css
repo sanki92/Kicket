@@ -104,8 +104,8 @@ body {
   direction: rtl;
 }
 
-/* Example CSS for LTR */
+/* Example CSS for LTR
 [dir="ltr"] {
   text-align: left;
   direction: ltr;
-}
+} */
