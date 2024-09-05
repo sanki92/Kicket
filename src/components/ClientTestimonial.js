@@ -49,6 +49,7 @@ const ClientTestimonial = ({ isPhone, testimonials }) => {
     ),
     customPaging: (i) => <CustomDot active={i === currentSlide} />,
   };
+  console.log("testimonial",testimonials)
 
   const sliderRef = React.useRef(null);
 

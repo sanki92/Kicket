@@ -7,7 +7,13 @@ import stars from "../../assets/starts.png";
 import { HiOutlineChevronRight, HiOutlineChevronLeft } from "react-icons/hi";
 import { useLanguage } from "../LanguageContext";
 
-const Stories = ({ title = "Success Stories", isPhone, data, dir }) => {
+const Stories = ({
+  arabic_title = "قصص النجاح",
+  title = "Success Stories",
+  isPhone,
+  data,
+  dir,
+}) => {
   const settings = {
     dots: false,
     infinite: true,
@@ -30,9 +36,10 @@ const Stories = ({ title = "Success Stories", isPhone, data, dir }) => {
   return (
     <div className="w-[85%] relative mx-auto mt-[5rem] my-10">
       <h2 className="text-white text-start text-[45px] font-[750] mb-12 flex justify-between items-center smM:text-[7vw] smM:whitespace-nowrap">
-        {title}{" "}
+        {language === "ar" ? arabic_title : title}
         <div className="justify-end flex space-x-4 z-10">
           <button
+            dir={language === "ar" ? "rtl" : "ltr"}
             className="w-12 h-12 bg-[#363637] rounded-full flex items-center justify-center text-white text-2xl"
             onClick={handlePrevClick}
           >
@@ -46,14 +53,14 @@ const Stories = ({ title = "Success Stories", isPhone, data, dir }) => {
           </button>
         </div>
       </h2>
-    {console.log("**** success 1",data)}
+      {console.log("**** success 1", data)}
       <div className="relative">
         <Slider
           ref={sliderRef}
           className=" max-h-[37rem] smM:min-h-[27rem] lgM:mx-auto bg-cover bg-center rounded-3xl"
           {...settings}
         >
-          {console.log("**** success 2",data)}
+          {console.log("**** success 2", data)}
           {data?.map((e) => (
             <div className="bg-[#252525] min-h-[37rem] max-h-[37rem] smM:min-h-[27rem] max-w-[25rem] flex flex-col items-center justify-center space-y-5 p-3 text-white text-lg border border-white rounded-xl border-opacity-15">
               <div className="flex items-center gap-x-10">
@@ -75,7 +82,12 @@ const Stories = ({ title = "Success Stories", isPhone, data, dir }) => {
                 >
                   {e[language].description}
                 </p>
-                <a download target="_blank" href={`https://kicketapi.webprismits.us/assets/stories/${e.pdf}`} className="cursor-pointer mt-4 w-fit mx-auto smM:py-2 smM:px-[2rem] smM:text-[3.5vw] mgM:text-[2vw] mgM:px-[1.8rem] mgM:py-2 mgM:mx-auto smM:leading-[6vw] py-2 px-[3rem] rounded-[50px] text-xl bg-gradient-to-r from-[#ED4C75] to-[#973EFF] text-white">
+                <a
+                  download
+                  target="_blank"
+                  href={`https://kicketapi.webprismits.us/assets/stories/${e.pdf}`}
+                  className="cursor-pointer mt-4 w-fit mx-auto smM:py-2 smM:px-[2rem] smM:text-[3.5vw] mgM:text-[2vw] mgM:px-[1.8rem] mgM:py-2 mgM:mx-auto smM:leading-[6vw] py-2 px-[3rem] rounded-[50px] text-xl bg-gradient-to-r from-[#ED4C75] to-[#973EFF] text-white"
+                >
                   Read More
                 </a>
               </div>

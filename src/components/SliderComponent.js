@@ -78,6 +78,7 @@ const SliderComponent = ({ serviceSnippet }) => {
               </div>
             </div>
           ))}
+          
         </Slider>
       </div>
     </div>

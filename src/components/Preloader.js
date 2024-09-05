@@ -14,7 +14,7 @@ const Preloader = () => {
       setClose(false);
       // Re-enable scrolling when preloader disappears
       document.body.style.overflow = "auto";
-    }, 3000);
+    }, 2000);
 
     // Cleanup the timer and reset overflow if the component unmounts
     return () => {

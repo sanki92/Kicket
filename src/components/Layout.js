@@ -15,7 +15,7 @@ const Layout = ({children}) => {
 
         {children}
         </div>
-        <div className='fixed bottom-10 z-30 left-0 w-[10rem]'>
+        <div className='fixed bottom-10 z-50 left-0 w-[10rem]'>
           <LanguageToggle/>
         </div>
         <Footer/>

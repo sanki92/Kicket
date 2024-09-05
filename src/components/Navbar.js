@@ -16,16 +16,16 @@ const Navbar = () => {
     en: {
       home: "Home",
       whyKicket: "Why Kicket",
-      service1: "Service 1",
-      service2: "Service 2",
+      service1: "Accreditation",
+      service2: "Registration",
       contact: "Contact",
       requestDemo: "Request A Demo",
     },
     ar: {
       home: "الرئيسية",
       whyKicket: "لماذا كيكيت",
-      service1: "الخدمة 1",
-      service2: "الخدمة 2",
+      service1: "الاعتماد",
+      service2: "تسجيل",
       contact: "تواصل",
       requestDemo: "طلب عرض توضيحي",
     },
@@ -34,8 +34,8 @@ const Navbar = () => {
   const navLinks = [
     { path: "/", label: translations[language].home },
     { path: "/why-kicket", label: translations[language].whyKicket },
-    { path: "/service/1", label: translations[language].service1 },
-    { path: "/service/2", label: translations[language].service2 },
+    { path: "/accreditation", label: translations[language].service1 },
+    { path: "/registration", label: translations[language].service2 },
     { path: "/contact", label: translations[language].contact },
   ];
 

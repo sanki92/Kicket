@@ -70,7 +70,9 @@ const Contact = () => {
         className="bg-cover bg-center h-[60vh] flex justify-center items-center relative"
         style={{ backgroundImage: `url(${bgImage})` }}
       >
-        <h1 className="text-[#FFC019] font-[750] text-[45px]">Contact</h1>
+        <h1 className="text-[#FFC019] font-[750] text-[45px]">
+          {language === "ar" ? "اتصل" : "Contact"}
+        </h1>
         <div className="w-full h-[10rem] bg-gradient-to-b from-black/0 to-[#252525]/100 absolute bottom-0"></div>
       </div>
       <div className=" flex justify-center mgM:flex-col mgM:items-center text-white text-[20px] w-[85%] mx-auto gap-x-14 mt-14">
@@ -85,21 +87,21 @@ const Contact = () => {
             {content[language]}
           </h1>
           <input
-            placeholder="Name"
+            placeholder={language == "ar" ? "اسم" : "Name"}
             name="name"
             onChange={handleOnChange}
             className="smM:text-[4vw]  py-2 px-4 rounded-full border bg-transparent"
             type="text"
           />
           <input
-            placeholder="Email"
+            placeholder={language == "ar" ? "بريد إلكتروني" : "Email"}
             name="email"
             onChange={handleOnChange}
             className=" smM:text-[4vw] py-2 px-4 rounded-full border bg-transparent"
             type="text"
           />
           <textarea
-            placeholder="Message"
+            placeholder={language == "ar" ? "رسالة" : "Message"}
             name="message"
             onChange={handleOnChange}
             className="smM:text-[4vw] h-[8rem] py-2 px-4 rounded-3xl border bg-transparent"
@@ -109,7 +111,7 @@ const Contact = () => {
             onClick={handleSubmit}
             className=" w-fit mt-5 smM:py-2 smM:px-[2rem] smM:text-[3.5vw] smM:leading-[6vw] py-4 px-[3rem] rounded-[50px] text-xl bg-gradient-to-r from-[#ED4C75] to-[#973EFF] text-white"
           >
-            Submit{" "}
+            {language==='ar'?"يُقدِّم":"Submit"}{" "}
           </button>
         </div>
       </div>

@@ -17,8 +17,8 @@ function App() {
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="/why-kicket" element={<WhyKicket />} />
-        <Route path="/service/1" element={<Service1 />} />
-        <Route path="/service/2" element={<Service2 />} />
+        <Route path="/accreditation" element={<Service1 />} />
+        <Route path="/registration" element={<Service2 />} />
         <Route path="/contact" element={<Contact />} />
 
       </Routes>

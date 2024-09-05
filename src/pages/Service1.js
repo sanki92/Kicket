@@ -13,7 +13,7 @@ import { useLanguage } from "../components/LanguageContext";
 const Service1 = () => {
   const [isPhone, setIsPhone] = useState(false);
   const [data, setData] = useState({
-    main_image: "",
+    image: "",
     en: {
       title: "",
       description: "",
@@ -37,14 +37,30 @@ const Service1 = () => {
       },
     },
   ]);
+
+  const [caseStudies, setCaseStudies] = useState([
+    {
+      image: "",
+      pdf: "",
+      en: {
+        title: "",
+        description: "",
+      },
+      ar: {
+        title: "",
+        description: "",
+      },
+    },
+  ]);
+
   const { language } = useLanguage();
 
   const fetchService = async () => {
     try {
       const response = await axiosConfig.get("/api/service/1");
       console.log("service 1", response);
-      setData({
-        main_image: response.data.main_image,
+      const tempData = {
+        image: response.data.main_image,
         en: {
           title: response.data.title,
           description: response.data.description,
@@ -53,7 +69,8 @@ const Service1 = () => {
           title: response.data.arabic_title,
           description: response.data.arabic_description,
         },
-      });
+      };
+      setData(tempData);
     } catch (error) {
       console.error("Error fetching home content data:", error);
     }
@@ -62,25 +79,49 @@ const Service1 = () => {
     try {
       const response = await axiosConfig.get("/api/features/1");
       console.log("service 1 keyfeature", response);
-      const data = response.data.map((e) => ({
-        image: "",
-        number: "",
+      const data = response.data.map((e, i) => ({
+        image: e.image,
+        number: i + 1,
         en: {
-          title: "",
-          description: "",
+          title: e.title,
+          description: e.description,
         },
         ar: {
-          title: "",
-          description: "",
+          title: e.arabic_title,
+          description: e.arabic_description,
         },
       }));
-      setFeatures();
+      setFeatures(data);
+    } catch (error) {
+      console.error("Error fetching home content data:", error);
+    }
+  };
+
+  const fetchCaseStudies = async () => {
+    try {
+      const response = await axiosConfig.get("/api/services/1/case-studies");
+      console.log("service 1 keyfeature", response.data);
+      const data = response.data.map((e) => ({
+        image: e.image,
+        pdf: e.file,
+        en: {
+          title: e.title,
+          description: e.description,
+        },
+        ar: {
+          title: e.arabic_title_,
+          description: e.arabic_description,
+        },
+      }));
+      setCaseStudies(data);
+      // setFeatures(data);
     } catch (error) {
       console.error("Error fetching home content data:", error);
     }
   };
 
   useEffect(() => {
+    fetchCaseStudies();
     fetchFeatures();
     fetchService();
     const handleResize = () => {
@@ -170,14 +211,17 @@ const Service1 = () => {
 
       <div className="flex lgM:flex-col lgM:items-center text-white text-[20px] w-[85%] mx-auto gap-x-14 mt-14">
         <img
-          src={`https://kicketapi.webprismits.us/assets/services/${data[language].main_image}`}
+          src={`https://kicketapi.webprismits.us/assets/services/${data.image}`}
           className="smM:hidden w-[30rem]"
         />
         <img src={ourService1phone} className="z-10 hidden smM:block" />
 
         <div className="flex flex-col justify-center gap-y-5">
-          <h1 className="text-white font-[750] text-[45px] lgM:text-center smM:text-[7vw] smM:whitespace-nowrap smM:mt-5 smM:text-center">
-            Service
+          <h1
+            dir={language === "ar" ? "rtl" : "ltr"}
+            className="text-white font-[750] text-[45px] lgM:text-center smM:text-[7vw] smM:whitespace-nowrap smM:mt-5 smM:text-center"
+          >
+            {language === "ar" ? "الخدمة" : "Service"}
           </h1>
           <p
             dir={language === "ar" ? "rtl" : "ltr"}
@@ -189,45 +233,62 @@ const Service1 = () => {
       </div>
 
       <div className="my-[5rem] mb-8">
-        <h1 className="text-white font-[750] text-[45px] text-center mb-10 smM:text-[7vw] smM:whitespace-nowrap smM:mt-5 smM:text-center">
-          Key Features
+        <h1
+          dir={language === "ar" ? "rtl" : "ltr"}
+          className="text-white font-[750] text-[45px] text-center mb-10 smM:text-[7vw] smM:whitespace-nowrap smM:mt-5 smM:text-center"
+        >
+          {language === "ar" ? "الميزات الرئيسية" : "Key Features"}
         </h1>
-        <Slider {...settings} className="w-[85%] mx-auto">
-          {features.map((feature) => (
+        <Slider {...settings} className="w-[85%] mx-auto lg:pl-5">
+          {features?.map((feature) => (
             <>
               {feature.number % 2 === 1 ? (
                 <div key={feature.number} className="text-white">
-                  <h2 className="text-[25px] text-center">{feature.title}</h2>
-                  <p className="text-[18px] text-[#D9D9D9] text-center">
-                    {feature.description}
+                  <h2
+                    style={{ textAlign: "left" }}
+                    dir={language === "ar" ? "rtl" : "ltr"}
+                    className="text-[25px] mb-2"
+                  >
+                    {feature[language].title}
+                  </h2>
+                  <p
+                    dir={language === "ar" ? "rtl" : "ltr"}
+                    className="text-[18px] text-[#D9D9D9] w-[18rem]"
+                  >
+                    {feature[language].description}
                   </p>
                   <h1 className="relative w-fit leading-[144px] px-14 text-[120px] text-[#4E4F4F] font-[750] mx-auto">
                     {feature.number}
                     <div className="absolute right-0 top-0 h-full w-[4px] bg-gradient-to-b from-[#ffc019] via-[#ed4c75] via-[#973eff] to-[#00d6cc]"></div>
                   </h1>
-                  <hr className="my-5 mt-[3.99rem]" />
-                  <div className="flex justify-center">
+                  {/* <hr className="my-5 mt-[3.99rem]" /> */}
+                  <div className="flex mt-12">
                     <div className="bg-[#363637] border border-[#D9D9D9] h-[15rem] w-[18rem] rounded-2xl flex items-center justify-center">
-                      <img src={ticket} alt={`ticket ${feature.number}`} />
+                      <img
+                        src={`https://kicketapi.webprismits.us/assets/features/${feature.image}`}
+                        alt={`ticket ${feature.number}`}
+                      />
                     </div>
                   </div>
                 </div>
               ) : (
                 <div key={feature.number} className="text-white space-y-8">
-                  <div className="flex justify-center">
-                    <div className="bg-[#363637] border border-[#D9D9D9] h-[15rem] w-[18rem] rounded-2xl flex items-center justify-center">
-                      <img src={ticket} alt={`ticket ${feature.number}`} />
+                  <div className="flex ">
+                    <div className="bg-[#363637] border border-[#D9D9D9] h-[15rem] w-[18rem] rounded-2xl flex items-center justify-center mb-12">
+                      <img
+                        src={`https://kicketapi.webprismits.us/assets/features/${feature.image}`}
+                        alt={`ticket ${feature.number}`}
+                      />
                     </div>
                   </div>
-                  <hr />
 
-                  <h1 className="relative w-fit leading-[144px] px-14 text-[120px] text-[#4E4F4F] font-[750] mx-auto">
+                  <h1 className="relative w-fit leading-[144px] px-14 text-[120px] text-[#4E4F4F] font-[750] mx-auto mb-2">
                     {feature.number}
                     <div className="absolute right-0 top-0 h-full w-[4px] bg-gradient-to-b from-[#ffc019] via-[#ed4c75] via-[#973eff] to-[#00d6cc]"></div>
                   </h1>
-                  <h2 className="text-[25px] text-center">{feature.title}</h2>
-                  <p className="text-[18px] text-[#D9D9D9] text-center">
-                    {feature.description}
+                  <h2 className="text-[25px] ">{feature[language].title}</h2>
+                  <p className="text-[18px] text-[#D9D9D9] w-[18rem] ">
+                    {feature[language].description}
                   </p>
                 </div>
               )}
@@ -236,7 +297,12 @@ const Service1 = () => {
         </Slider>
       </div>
 
-      <Stories isPhone={isPhone} title={"Case Studies"} />
+      <Stories
+        isPhone={isPhone}
+        title={"Case Studies"}
+        dir={"case-studies"}
+        data={caseStudies}
+      />
       <Experience />
     </Layout>
   );

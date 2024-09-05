@@ -17,8 +17,10 @@ import ClientTestimonial from "../components/ClientTestimonial";
 import Experience from "../components/Experience";
 import axiosConfig from "../axios/axiosConfig";
 import { useLanguage } from "../components/LanguageContext";
+import { Link } from "react-router-dom";
 
 const LandingPage = () => {
+  
   const [isPhone, setIsPhone] = useState(false);
   const [testimonials, setTestimonials] = useState([]);
   const [serviceSnippet, setServiceSnippet] = useState([]);
@@ -59,6 +61,7 @@ const LandingPage = () => {
       const response = await axiosConfig.get("/api/testimonial");
 
       const data = response.data.map((e) => ({
+        image: e.image,
         en: {
           name: e.name,
           message: e.message,
@@ -126,6 +129,7 @@ const LandingPage = () => {
       const response = await axiosConfig.get("/api/service");
       console.log("Home service data:", response.data);
       const data = response.data.map((e) => ({
+        image: e.main_image,
         en: {
           title: e.title,
           description: e.description,
@@ -201,12 +205,13 @@ const LandingPage = () => {
             <p className="text-white text-xl text-center w-[64%] mgM:w-[95%] mgM:text-start mx-auto leading-[35px] smM:text-[4vw] smM:leading-[6vw]">
               {homeContent[language]}
             </p>
-            <button
+            <Link
+            to={"/why-kicket"}
               dir={language === "ar" ? "rtl" : "ltr"}
               className="smM:py-2 smM:px-[2rem] smM:text-[3.5vw] smM:leading-[6vw] py-4 px-[3rem] rounded-[50px] text-xl bg-gradient-to-r from-[#ED4C75] to-[#973EFF] text-white"
             >
               {language === "ar" ? "اعرف أكثر" : "Know More"}
-            </button>
+            </Link>
           </div>
         </div>
       </div>
@@ -224,12 +229,12 @@ const LandingPage = () => {
         </h1>
         <div className="flex mgM:flex-col justify-between items-center lgM:mb-[5rem]">
           <img
-            src={ourService1}
+            src={`https://kicketapi.webprismits.us/assets/services/${homeService[0].image}`}
             className="z-10 smM:hidden"
             alt="Our Service 1"
           />
           <img
-            src={ourService1phone}
+            src={`https://kicketapi.webprismits.us/assets/services/${homeService[0].image}`}
             className="z-10 hidden smM:block"
             alt="Our Service 1 (Phone)"
           />
@@ -256,24 +261,25 @@ const LandingPage = () => {
             >
               {homeService[0][language].description}
             </p>
-            <button
+            <Link
+            to={"/accreditation"}
               dir={language === "ar" ? "rtl" : "ltr"}
               className="smM:py-2 smM:px-[2rem] smM:text-[3.5vw] smM:leading-[6vw] py-4 px-[3rem] rounded-[50px] text-xl bg-gradient-to-r from-[#ED4C75] to-[#973EFF] text-white"
             >
               {language === "ar" ? "اعرف أكثر" : "Know More"}
-            </button>
+            </Link>
           </div>
         </div>
         <div className="flex mgM:flex-col mgM:mt-10 flex-row-reverse justify-between items-center">
-          <img
-            src={ourService2}
+        <img
+            src={`https://kicketapi.webprismits.us/assets/services/${homeService[1].image}`}
             className="z-10 smM:hidden"
-            alt="Our Service 2"
+            alt="Our Service 1"
           />
-          <img
-            src={ourService2phone}
+             <img
+            src={`https://kicketapi.webprismits.us/assets/services/${homeService[1].image}`}
             className="z-10 hidden smM:block"
-            alt="Our Service 2 (Phone)"
+            alt="Our Service 1 (Phone)"
           />
 
           <div className="h-fit w-[50%] smM:w-[95%] flex flex-col items-start justify-center smM:justify-normal gap-y-8 relative">
@@ -298,12 +304,13 @@ const LandingPage = () => {
             >
               {homeService[1][language].description}
             </p>
-            <button
+            <Link
+            to={"/registration"}
               dir={language === "ar" ? "rtl" : "ltr"}
               className="smM:py-2 smM:px-[2rem] smM:text-[3.5vw] smM:leading-[6vw] py-4 px-[3rem] rounded-[50px] text-xl bg-gradient-to-r from-[#ED4C75] to-[#973EFF] text-white"
             >
               {language === "ar" ? "اعرف أكثر" : "Know More"}
-            </button>
+            </Link>
           </div>
         </div>
       </div>
