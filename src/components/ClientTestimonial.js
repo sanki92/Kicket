@@ -5,6 +5,7 @@ import "slick-carousel/slick/slick-theme.css";
 import person from "../assets/testimonial-person.png";
 import stars from "../assets/starts.png";
 import { HiOutlineChevronRight, HiOutlineChevronLeft } from "react-icons/hi";
+import { useLanguage } from "./LanguageContext";
 
 const CustomDot = ({ active }) => (
   <div
@@ -24,7 +25,7 @@ const CustomDot = ({ active }) => (
 
 const ClientTestimonial = ({ isPhone, testimonials }) => {
   const [currentSlide, setCurrentSlide] = useState(0);
-
+  const { language } = useLanguage();
   const settings = {
     dots: true,
     infinite: true,
@@ -37,7 +38,7 @@ const ClientTestimonial = ({ isPhone, testimonials }) => {
     beforeChange: (oldIndex, newIndex) => setCurrentSlide(newIndex),
     appendDots: (dots) => (
       <div
-       className="my-10"
+        className="my-10"
         style={{
           display: "flex",
           justifyContent: "center",
@@ -61,36 +62,40 @@ const ClientTestimonial = ({ isPhone, testimonials }) => {
 
   return (
     <div className="w-[85%] relative mx-auto mt-[5rem] my-10">
-      <h2 className="text-white text-center text-[45px] font-[750] mb-12  smM:text-[7vw] smM:whitespace-nowrap">
-        Client Testimonials
+      <h2
+        className="text-white text-center text-[45px] font-[750] mb-12 smM:text-[7vw] smM:whitespace-nowrap"
+        dir={language === "ar" ? "rtl" : "ltr"}
+      >
+        {language === "ar" ? "آراء العملاء" : "Client Testimonials"}
       </h2>
 
       <div className="relative">
         <Slider
           ref={sliderRef}
-          className="h-[23rem] bg-cover bg-center rounded-3xl"
+          className="h-[23rem] overflow-y-hidden bg-cover bg-center rounded-3xl"
           {...settings}
         >
-          {
-            testimonials.map(e=>(
-
-          <div className="bg-[#252525] h-[23rem] max-w-[23rem] flex flex-col space-y-5 p-7 text-white text-lg border border-white rounded-xl border-opacity-15">
-            <div className="flex items-center gap-x-10">
-              <img src={`https://kicketapi.webprismits.us/assets/testimonials/${e.image}`} />
-              <div className="flex flex-col gap-y-2">
-                <img src={stars} className="w-[9rem]" />
-                <p className="">{e.name}</p>
+          {testimonials.map((e) => (
+            <div className="bg-[#252525] h-[23rem] max-w-[23rem] flex flex-col space-y-5 p-7 text-white text-lg border border-white rounded-xl border-opacity-15">
+              <div className="flex items-center gap-x-10">
+                <img
+                  src={`https://kicketapi.webprismits.us/assets/testimonials/${e.image}`}
+                />
+                <div className="flex flex-col gap-y-2">
+                  <img src={stars} className="w-[9rem]" />
+                  <p dir={language === "ar" ? "rtl" : "ltr"} className="">
+                    {e[language].name}
+                  </p>
+                </div>
+              </div>
+              <div>
+                <p dir={language === "ar" ? "rtl" : "ltr"}>
+                  {e[language].message}
+                </p>
               </div>
             </div>
-            <div>
-              <p>
-               {e.message}
-              </p>
-            </div>
-          </div>
-            ))
-          }
-       
+          ))}
+
           {/* <div className="h-[30rem]">
             <div className="flex h-full">
               <img src={phone} alt="Service Image" className="" />
