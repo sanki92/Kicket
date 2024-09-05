@@ -7,7 +7,7 @@ import { useLanguage } from "./LanguageContext";
 const Footer = () => {
   const {language} = useLanguage();
   return (
-    <div className="relative">
+    <div className="relative flex">
       <img src={footerBg} className="absolute bottom-0 right-0" />
       <div className="flex flex-col items-center justify-between w-[80%] smM:w-[85%] mx-auto">
         <div
