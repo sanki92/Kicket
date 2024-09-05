@@ -4,10 +4,41 @@ import logo from "../assets/logo.png";
 import menuIcon from "../assets/menuIcon.png";
 import { RxCross2 } from "react-icons/rx";
 import RequestDemo from "./RequestDemo";
+import { useLanguage } from "../components/LanguageContext";
 
 const Navbar = () => {
+  const { language } = useLanguage(); // Get the current language from context
   const [open, setOpen] = useState(false);
   const [requestDemo, setRequestDemo] = useState(false);
+
+  // Hardcoded translations for navbar links and Request a Demo button
+  const translations = {
+    en: {
+      home: "Home",
+      whyKicket: "Why Kicket",
+      service1: "Service 1",
+      service2: "Service 2",
+      contact: "Contact",
+      requestDemo: "Request A Demo",
+    },
+    ar: {
+      home: "الرئيسية",
+      whyKicket: "لماذا كيكيت",
+      service1: "الخدمة 1",
+      service2: "الخدمة 2",
+      contact: "تواصل",
+      requestDemo: "طلب عرض توضيحي",
+    },
+  };
+
+  const navLinks = [
+    { path: "/", label: translations[language].home },
+    { path: "/why-kicket", label: translations[language].whyKicket },
+    { path: "/service/1", label: translations[language].service1 },
+    { path: "/service/2", label: translations[language].service2 },
+    { path: "/contact", label: translations[language].contact },
+  ];
+
   return (
     <div className="w-full flex justify-center fixed z-50">
       <div className="py-3 px-3 my-12 bg-gray-800 bg-opacity-45 backdrop-blur-md text-white border rounded-[100px] text-xl w-[85%] lgM:w-[95%] mgM:hidden mx-auto">
@@ -17,60 +48,32 @@ const Navbar = () => {
             <p className="font-[750]">KICKET</p>
           </li>
           <li className="flex items-center justify-between w-[70%] lgM:w-[75%]">
-            <NavLink
-              to="/"
-              className={({ isActive }) =>
-                `transition-colors ${isActive ? "text-[#FFC019]" : ""}`
-              }
-            >
-              Home
-            </NavLink>
-            <NavLink
-              to="/why-kicket"
-              className={({ isActive }) =>
-                `transition-colors ${isActive ? "text-[#FFC019]" : ""}`
-              }
-            >
-              Why Kicket
-            </NavLink>
-            <NavLink
-              to="/service/1"
-              className={({ isActive }) =>
-                `transition-colors ${isActive ? "text-[#FFC019]" : ""}`
-              }
-            >
-              Service 1
-            </NavLink>
-            <NavLink
-              to="/service/2"
-              className={({ isActive }) =>
-                `transition-colors ${isActive ? "text-[#FFC019]" : ""}`
-              }
-            >
-              Service 2
-            </NavLink>
-            <NavLink
-              to="/contact"
-              className={({ isActive }) =>
-                `transition-colors ${isActive ? "text-[#FFC019]" : ""}`
-              }
-            >
-              Contact
-            </NavLink>
+            {navLinks.map((link, index) => (
+              <NavLink
+                key={index}
+                to={link.path}
+                className={({ isActive }) =>
+                  `transition-colors ${isActive ? "text-[#FFC019]" : ""}`
+                }
+              >
+                {link.label}
+              </NavLink>
+            ))}
             <li>
               <button
                 onClick={() => setRequestDemo(true)}
                 className="w-[194px] h-[52px] lgM:w-[160px] lgM:h-[48px] rounded-[26px] bg-gradient-to-r from-[#ED4C75] to-[#973EFF] text-white"
               >
-                Request A Demo
+                {translations[language].requestDemo}
               </button>
             </li>
           </li>
         </ul>
       </div>
+
       <div className="hidden mgM:block w-screen bg-gray-800 bg-opacity-45 backdrop-blur-md">
         <div className="my-3 flex justify-between px-7">
-          <img src={logo} className="w-[2.3rem] object-contain " />
+          <img src={logo} className="w-[2.3rem] object-contain" />
           <div
             onClick={() => setOpen(true)}
             className="bg-white rounded-full min-h-[2rem] min-w-[3rem] bg-opacity-10 flex items-center justify-center p-2"
@@ -85,60 +88,31 @@ const Navbar = () => {
               <RxCross2 onClick={() => setOpen(false)} className="text-2xl" />
             </div>
 
-            <ul className="">
+            <ul>
               <li className="mt-[5rem] flex flex-col items-end gap-y-5">
-                <NavLink
-                  to="/"
-                  className={({ isActive }) =>
-                    `transition-colors ${isActive ? "text-[#FFC019]" : ""}`
-                  }
-                >
-                  Home
-                </NavLink>
-                <NavLink
-                  to="/why-kicket"
-                  className={({ isActive }) =>
-                    `transition-colors ${isActive ? "text-[#FFC019]" : ""}`
-                  }
-                >
-                  Why Kicket
-                </NavLink>
-                <NavLink
-                  to="/service/1"
-                  className={({ isActive }) =>
-                    `transition-colors ${isActive ? "text-[#FFC019]" : ""}`
-                  }
-                >
-                  Service 1
-                </NavLink>
-                <NavLink
-                  to="/service/2"
-                  className={({ isActive }) =>
-                    `transition-colors ${isActive ? "text-[#FFC019]" : ""}`
-                  }
-                >
-                  Service 2
-                </NavLink>
-                <NavLink
-                  to="/contact"
-                  className={({ isActive }) =>
-                    `transition-colors ${isActive ? "text-[#FFC019]" : ""}`
-                  }
-                >
-                  Contact
-                </NavLink>
-
+                {navLinks.map((link, index) => (
+                  <NavLink
+                    key={index}
+                    to={link.path}
+                    className={({ isActive }) =>
+                      `transition-colors ${isActive ? "text-[#FFC019]" : ""}`
+                    }
+                  >
+                    {link.label}
+                  </NavLink>
+                ))}
                 <button
                   onClick={() => setRequestDemo(true)}
                   className="w-[194px] h-[52px] lgM:w-[160px] lgM:h-[48px] rounded-[26px] bg-gradient-to-r from-[#ED4C75] to-[#973EFF] text-white"
                 >
-                  Request A Demo
+                  {translations[language].requestDemo}
                 </button>
               </li>
             </ul>
           </div>
         )}
       </div>
+
       {requestDemo && <RequestDemo setRequestDemo={setRequestDemo} />}
     </div>
   );

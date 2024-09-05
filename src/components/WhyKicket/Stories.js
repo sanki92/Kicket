@@ -5,6 +5,7 @@ import "slick-carousel/slick/slick-theme.css";
 import storiesImg from "../../assets/whyKicket/storiesImg.png";
 import stars from "../../assets/starts.png";
 import { HiOutlineChevronRight, HiOutlineChevronLeft } from "react-icons/hi";
+import { useLanguage } from "../LanguageContext";
 
 const Stories = ({ title = "Success Stories", isPhone, data, dir }) => {
   const settings = {
@@ -15,7 +16,7 @@ const Stories = ({ title = "Success Stories", isPhone, data, dir }) => {
     slidesToScroll: 1,
     arrows: false,
   };
-
+  const { language } = useLanguage();
   const sliderRef = React.useRef(null);
 
   const handlePrevClick = () => {
@@ -45,36 +46,47 @@ const Stories = ({ title = "Success Stories", isPhone, data, dir }) => {
           </button>
         </div>
       </h2>
-
+    {console.log("**** success 1",data)}
       <div className="relative">
         <Slider
           ref={sliderRef}
-          className="h-[32rem] smM:h-[27rem] lgM:mx-auto bg-cover bg-center rounded-3xl"
+          className=" max-h-[37rem] smM:min-h-[27rem] lgM:mx-auto bg-cover bg-center rounded-3xl"
           {...settings}
         >
+          {console.log("**** success 2",data)}
           {data?.map((e) => (
-            <div className="bg-[#252525] h-[32rem] smM:h-[27rem] max-w-[25rem] flex flex-col justify-center space-y-5 p-3 text-white text-lg border border-white rounded-xl border-opacity-15">
+            <div className="bg-[#252525] min-h-[37rem] max-h-[37rem] smM:min-h-[27rem] max-w-[25rem] flex flex-col items-center justify-center space-y-5 p-3 text-white text-lg border border-white rounded-xl border-opacity-15">
               <div className="flex items-center gap-x-10">
                 <img
+                  className="w-100% h-[16rem] object-contain"
                   src={`https://kicketapi.webprismits.us/assets/${dir}/${e.image}`}
                 />
               </div>
               <div className="flex flex-col">
-                <h1 className="text-[30px] text-center -mt-3 mb-5 smM:text-[6vw] smM:whitespace-nowrap ">
-                  {e.title}
+                <h1
+                  dir={language === "ar" ? "rtl" : "ltr"}
+                  className="text-[30px] text-center -mt-3 mb-5 smM:text-[5vw] smM:whitespace-nowrap "
+                >
+                  {e[language].title}
                 </h1>
-                <p className="text-[20px] leading-[30px] text-center smM:text-[4vw] smM:leading-[6vw] lgM:text-[2vw] lgM:leading-[3vw]">
-                  {e.description}
+                <p
+                  dir={language === "ar" ? "rtl" : "ltr"}
+                  className="text-[20px] leading-[30px] text-center smM:text-[3vw] smM:leading-[5vw] lgM:text-[2vw] lgM:leading-[3vw]"
+                >
+                  {e[language].description}
                 </p>
-                <button className="mt-4 w-fit mx-auto smM:py-2 smM:px-[2rem] smM:text-[3.5vw] mgM:text-[2vw] mgM:px-[1.8rem] mgM:py-2 mgM:mx-auto smM:leading-[6vw] py-2 px-[3rem] rounded-[50px] text-xl bg-gradient-to-r from-[#ED4C75] to-[#973EFF] text-white">
-                Read More
-              </button>
+                <a download target="_blank" href={`https://kicketapi.webprismits.us/assets/stories/${e.pdf}`} className="cursor-pointer mt-4 w-fit mx-auto smM:py-2 smM:px-[2rem] smM:text-[3.5vw] mgM:text-[2vw] mgM:px-[1.8rem] mgM:py-2 mgM:mx-auto smM:leading-[6vw] py-2 px-[3rem] rounded-[50px] text-xl bg-gradient-to-r from-[#ED4C75] to-[#973EFF] text-white">
+                  Read More
+                </a>
               </div>
             </div>
           ))}
-          <div className="bg-[#252525] smM:h-[27rem] max-w-[25rem] flex flex-col items-center justify-center space-y-5 p-3 text-white text-lg border border-white rounded-xl border-opacity-15">
+          <div className="bg-[#252525] min-h-[37rem] max-h-[37rem] smM:min-h-[27rem] max-w-[25rem] flex flex-col items-center justify-center space-y-5 p-3 text-white text-lg border border-white rounded-xl border-opacity-15">
             <div className="flex items-center gap-x-10">
-              <img src={storiesImg} />
+              <img
+                className="w-100% h-[16rem] object-contain"
+                src={storiesImg}
+              />
             </div>
             <div className="flex flex-col">
               <h1 className="text-[30px] text-center -mt-3 mb-5 smM:text-[5vw] smM:whitespace-nowrap ">
@@ -90,9 +102,12 @@ const Stories = ({ title = "Success Stories", isPhone, data, dir }) => {
               </button>
             </div>
           </div>
-          <div className="bg-[#252525] smM:h-[27rem] max-w-[25rem] flex flex-col items-center justify-center space-y-5 p-3 text-white text-lg border border-white rounded-xl border-opacity-15">
+          <div className="bg-[#252525] min-h-[37rem] max-h-[37rem] smM:min-h-[27rem] max-w-[25rem] flex flex-col items-center justify-center space-y-5 p-3 text-white text-lg border border-white rounded-xl border-opacity-15">
             <div className="flex items-center gap-x-10">
-              <img src={storiesImg} />
+              <img
+                className="w-100% h-[16rem] object-contain"
+                src={storiesImg}
+              />
             </div>
             <div className="flex flex-col">
               <h1 className="text-[30px] text-center -mt-3 mb-5 smM:text-[5vw] smM:whitespace-nowrap ">
@@ -108,9 +123,12 @@ const Stories = ({ title = "Success Stories", isPhone, data, dir }) => {
               </button>
             </div>
           </div>
-          <div className="bg-[#252525] smM:h-[27rem] max-w-[25rem] flex flex-col items-center justify-center space-y-5 p-3 text-white text-lg border border-white rounded-xl border-opacity-15">
+          <div className="bg-[#252525] smM:min-h-[27rem] max-w-[25rem] flex flex-col items-center justify-center space-y-5 p-3 text-white text-lg border border-white rounded-xl border-opacity-15">
             <div className="flex items-center gap-x-10">
-              <img src={storiesImg} />
+              <img
+                className="w-100% h-[16rem] object-contain"
+                src={storiesImg}
+              />
             </div>
             <div className="flex flex-col">
               <h1 className="text-[30px] text-center -mt-3 mb-5 smM:text-[5vw] smM:whitespace-nowrap ">

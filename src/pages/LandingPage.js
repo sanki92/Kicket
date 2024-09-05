@@ -24,6 +24,7 @@ const LandingPage = () => {
   const [serviceSnippet, setServiceSnippet] = useState([]);
   const [homeService, setHomeService] = useState([
     {
+      image: "",
       en: {
         title: "",
         description: "",
@@ -34,6 +35,8 @@ const LandingPage = () => {
       },
     },
     {
+      image: "",
+
       en: {
         title: "",
         description: "",
@@ -54,7 +57,20 @@ const LandingPage = () => {
   const fetchTestimonials = async () => {
     try {
       const response = await axiosConfig.get("/api/testimonial");
-      setTestimonials(response.data);
+
+      const data = response.data.map((e) => ({
+        en: {
+          name: e.name,
+          message: e.message,
+        },
+        ar: {
+          name: e.arabic_name,
+          message: e.arabic_message,
+        },
+      }));
+
+      setTestimonials(data);
+      console.log("**", response);
     } catch (error) {
       console.error("Error fetching testimonials data:", error);
     }
@@ -63,7 +79,18 @@ const LandingPage = () => {
   const fetchHomeContent = async () => {
     try {
       const response = await axiosConfig.get("/api/service-snippets");
-      setServiceSnippet(response.data);
+      const data = response.data.map((e) => ({
+        image: e.image,
+        en: {
+          title: e.title,
+          description: e.description,
+        },
+        ar: {
+          title: e.arabic_title,
+          description: e.arabic_description,
+        },
+      }));
+      setServiceSnippet(data);
     } catch (error) {
       console.error("Error fetching home content data:", error);
     }
@@ -151,11 +178,15 @@ const LandingPage = () => {
           className="absolute w-full left-0 -top-[15rem] smM:-top-[6rem]"
           alt="Blur Background"
         />
+
         <div className="relative flex justify-center">
-          <h1 className="text-[45px] font-[750] leading-[54px] text-white absolute smM:text-[7vw] smM:whitespace-nowrap">
-            Why{" "}
+          <h1
+            dir={language === "ar" ? "rtl" : "ltr"}
+            className="text-[45px] font-[750] leading-[54px] text-white absolute smM:text-[7vw] smM:whitespace-nowrap"
+          >
+            {language === "ar" ? "لماذا" : "Why"}{" "}
             <span className="bg-gradient-to-r from-[#FFC019] via-[#ED4C75] to-[#00D6CC] text-transparent bg-clip-text">
-              KICKET
+              {language === "ar" ? "كيكيت" : "KICKET"}
             </span>
           </h1>
           <img
@@ -170,8 +201,11 @@ const LandingPage = () => {
             <p className="text-white text-xl text-center w-[64%] mgM:w-[95%] mgM:text-start mx-auto leading-[35px] smM:text-[4vw] smM:leading-[6vw]">
               {homeContent[language]}
             </p>
-            <button className="smM:py-2 smM:px-[2rem] smM:text-[3.5vw] smM:leading-[6vw] py-4 px-[3rem] rounded-[50px] text-xl bg-gradient-to-r from-[#ED4C75] to-[#973EFF] text-white">
-              Know More
+            <button
+              dir={language === "ar" ? "rtl" : "ltr"}
+              className="smM:py-2 smM:px-[2rem] smM:text-[3.5vw] smM:leading-[6vw] py-4 px-[3rem] rounded-[50px] text-xl bg-gradient-to-r from-[#ED4C75] to-[#973EFF] text-white"
+            >
+              {language === "ar" ? "اعرف أكثر" : "Know More"}
             </button>
           </div>
         </div>
@@ -182,8 +216,11 @@ const LandingPage = () => {
         style={{ backgroundImage: `url(${serviceBg})` }}
         className="w-[85%] lgM:w-[90%] text-white mx-auto block relative z-20 mt-[8rem] smM:mt-[4rem] bg-[center] bg-no-repeat mgM:w-[95%]"
       >
-        <h1 className="text-[45px] font-[750] mb-12 smM:text-center smM:mb-6 smM:text-[7vw] smM:whitespace-nowrap">
-          Our Services
+        <h1
+          dir={language === "ar" ? "rtl" : "ltr"}
+          className="text-[45px] font-[750] mb-12 smM:text-center smM:mb-6 smM:text-[7vw] smM:whitespace-nowrap"
+        >
+          {language === "ar" ? "خدماتنا" : "Our Services"}
         </h1>
         <div className="flex mgM:flex-col justify-between items-center lgM:mb-[5rem]">
           <img
@@ -198,7 +235,7 @@ const LandingPage = () => {
           />
 
           <div className="h-fit w-[50%] smM:w-[95%] flex flex-col items-end justify-center smM:justify-normal gap-y-8 relative">
-          <div class="line-with-circle absolute -left-[13rem] z-0">
+            <div class="line-with-circle absolute -left-[13rem] z-0">
               <div class="line"></div>
               <div class="circle"></div>
             </div>
@@ -219,8 +256,11 @@ const LandingPage = () => {
             >
               {homeService[0][language].description}
             </p>
-            <button className="smM:py-2 smM:px-[2rem] smM:text-[3.5vw] mgM:text-[2vw] mgM:px-[1.8rem] mgM:py-2 mgM:mx-auto smM:leading-[6vw] py-4 px-[3rem] rounded-[50px] text-xl bg-gradient-to-r from-[#ED4C75] to-[#973EFF] text-white">
-              Know More
+            <button
+              dir={language === "ar" ? "rtl" : "ltr"}
+              className="smM:py-2 smM:px-[2rem] smM:text-[3.5vw] smM:leading-[6vw] py-4 px-[3rem] rounded-[50px] text-xl bg-gradient-to-r from-[#ED4C75] to-[#973EFF] text-white"
+            >
+              {language === "ar" ? "اعرف أكثر" : "Know More"}
             </button>
           </div>
         </div>
@@ -237,7 +277,7 @@ const LandingPage = () => {
           />
 
           <div className="h-fit w-[50%] smM:w-[95%] flex flex-col items-start justify-center smM:justify-normal gap-y-8 relative">
-          <div class="line-with-circle absolute -right-[16rem] smM:left-0 smM:right-auto smM:rotate-90 smM:top-0 rotate-180 z-10">
+            <div class="line-with-circle absolute -right-[16rem] smM:left-0 smM:right-auto smM:rotate-90 smM:top-0 rotate-180 z-10">
               <div class="line"></div>
               <div class="circle"></div>
             </div>
@@ -258,13 +298,16 @@ const LandingPage = () => {
             >
               {homeService[1][language].description}
             </p>
-            <button className="smM:py-2 smM:px-[2rem] smM:text-[3.5vw] mgM:text-[2vw] mgM:px-[1.8rem] mgM:py-2 mgM:mx-auto smM:leading-[6vw] py-4 px-[3rem] rounded-[50px] text-xl bg-gradient-to-r from-[#ED4C75] to-[#973EFF] text-white">
-              Know More
+            <button
+              dir={language === "ar" ? "rtl" : "ltr"}
+              className="smM:py-2 smM:px-[2rem] smM:text-[3.5vw] smM:leading-[6vw] py-4 px-[3rem] rounded-[50px] text-xl bg-gradient-to-r from-[#ED4C75] to-[#973EFF] text-white"
+            >
+              {language === "ar" ? "اعرف أكثر" : "Know More"}
             </button>
           </div>
         </div>
       </div>
-      <SliderComponent serviceSnippet={serviceSnippet}/>
+      <SliderComponent serviceSnippet={serviceSnippet} />
       <OurClients clients={clients} />
       <ClientTestimonial testimonials={testimonials} />
       <Experience />
