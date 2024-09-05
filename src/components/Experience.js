@@ -14,9 +14,7 @@ const Experience = () => {
       >
         <img
           src={phones2}
-          className={`absolute -left-[12rem] w-[48%] bottom-0 smM:w-[30%] smM:${
-            language === "ar" ? "right-0" : "left-0"
-          } smM:top-10`}
+          className="absolute -left-[12rem] w-[53%] bottom-0 smM:w-[30%] smM:left-0 smM:top-10"
         />
         <div className="flex smM:items-end items-center justify-center flex-col w-[24rem] text-center smM:p-4">
           <h1
@@ -24,9 +22,13 @@ const Experience = () => {
             className="text-[#EBEBEB] text-[30px] leading-[36px] mb-4 smM:text-[4.3vw] smM:text-right smM:leading-[23px] smM:whitespace-nowrap"
           >
             {language === "ar"
-              ? "جرّبه مباشرة: اطلب عرضك اليوم"
-              : "Experience It Live: Request Your Demo Today"}
-            <br className="hidden smM:block" />
+              ? "اطلب عرضك اليوم"
+              : `Experience It Live:`}
+              <br className="hidden smM:block" />
+              {language === "ar"
+              ? "جرّبه مباشرة"
+              : `Request Your Demo Today`}
+            
           </h1>
           <button className="py-4 px-[3rem] smM:py-2 smM:px-[2rem] smM:text-[3.5vw] smM:leading-[6vw] rounded-[50px] text-xl bg-gradient-to-r from-[#ED4C75] to-[#973EFF] text-white">
             {language === "ar" ? "اطلب العرض التوضيحي" : "Request for Demo"}
