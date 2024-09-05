@@ -315,8 +315,8 @@ const LandingPage = () => {
         </div>
       </div>
       <SliderComponent serviceSnippet={serviceSnippet} />
-      <OurClients clients={clients} />
-      <ClientTestimonial testimonials={testimonials} />
+      <OurClients isPhone={isPhone} clients={clients} />
+      <ClientTestimonial isPhone={isPhone} testimonials={testimonials} />
       <Experience />
     </Layout>
   );
