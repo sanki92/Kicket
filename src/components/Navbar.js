@@ -83,7 +83,7 @@ const Navbar = () => {
         </div>
 
         {open && (
-          <div className="p-5 h-screen w-[22rem] fixed top-0 right-0 bg-gray-800 bg-opacity-45 backdrop-blur-md text-white rounded-s-3xl flex justify-end">
+          <div className="p-5 h-screen w-[22rem] fixed top-0 right-0 bg-gray-800 bg-opacity-75 backdrop-blur-md text-white rounded-s-3xl flex justify-end">
             <div className="bg-white absolute right-7 top-3 rounded-full h-[3rem] w-[3rem] bg-opacity-20 cursor-pointer flex items-center justify-center p-2">
               <RxCross2 onClick={() => setOpen(false)} className="text-2xl" />
             </div>
