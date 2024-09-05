@@ -109,7 +109,7 @@ const Service1 = () => {
           description: e.description,
         },
         ar: {
-          title: e.arabic_title_,
+          title: e.arabic_title,
           description: e.arabic_description,
         },
       }));

@@ -87,7 +87,7 @@ const Service2 = () => {
           description: e.description,
         },
         ar: {
-          title: e.arabic_title_,
+          title: e.arabic_title,
           description: e.arabic_description,
         },
       }));
@@ -109,7 +109,7 @@ const Service2 = () => {
           description: e.description,
         },
         ar: {
-          title: e.arabic_title_,
+          title: e.arabic_title,
           description: e.arabic_description,
         },
       }));
@@ -239,13 +239,21 @@ const Service2 = () => {
         >
           {language === "ar" ? "الميزات الرئيسية" : "Key Features"}
         </h1>
-        <Slider {...settings} className="w-[85%] mx-auto">
+        <Slider {...settings} className="w-[85%] mx-auto lg:pl-5">
           {features?.map((feature) => (
             <>
               {feature.number % 2 === 1 ? (
                 <div key={feature.number} className="text-white">
-                  <h2 className="text-[25px]  mb-2">{feature[language].title}</h2>
-                  <p className="text-[18px] text-[#D9D9D9] ">
+                  <h2
+                    dir={language === "ar" ? "rtl" : "ltr"}
+                    className="text-[25px] mb-2 w-[18rem]"
+                  >
+                    {feature[language].title}
+                  </h2>
+                  <p
+                    dir={language === "ar" ? "rtl" : "ltr"}
+                    className="text-[18px] text-[#D9D9D9] w-[18rem]"
+                  >
                     {feature[language].description}
                   </p>
                   <h1 className="relative w-fit leading-[144px] px-14 text-[120px] text-[#4E4F4F] font-[750] mx-auto">
@@ -255,7 +263,10 @@ const Service2 = () => {
                   {/* <hr className="my-5 mt-[3.99rem]" /> */}
                   <div className="flex mt-12">
                     <div className="bg-[#363637] border border-[#D9D9D9] h-[15rem] w-[18rem] rounded-2xl flex items-center justify-center">
-                      <img src={`https://kicketapi.webprismits.us/assets/features/${feature.image}`} alt={`ticket ${feature.number}`} />
+                      <img
+                        src={`https://kicketapi.webprismits.us/assets/features/${feature.image}`}
+                        alt={`ticket ${feature.number}`}
+                      />
                     </div>
                   </div>
                 </div>
@@ -263,17 +274,27 @@ const Service2 = () => {
                 <div key={feature.number} className="text-white space-y-8">
                   <div className="flex ">
                     <div className="bg-[#363637] border border-[#D9D9D9] h-[15rem] w-[18rem] rounded-2xl flex items-center justify-center mb-12">
-                      <img src={`https://kicketapi.webprismits.us/assets/features/${feature.image}`}alt={`ticket ${feature.number}`} />
+                      <img
+                        src={`https://kicketapi.webprismits.us/assets/features/${feature.image}`}
+                        alt={`ticket ${feature.number}`}
+                      />
                     </div>
                   </div>
-                  
 
                   <h1 className="relative w-fit leading-[144px] px-14 text-[120px] text-[#4E4F4F] font-[750] mx-auto mb-2">
                     {feature.number}
                     <div className="absolute right-0 top-0 h-full w-[4px] bg-gradient-to-b from-[#ffc019] via-[#ed4c75] via-[#973eff] to-[#00d6cc]"></div>
                   </h1>
-                  <h2 className="text-[25px] ">{feature[language].title}</h2>
-                  <p className="text-[18px] text-[#D9D9D9] ">
+                  <h2
+                    dir={language === "ar" ? "rtl" : "ltr"}
+                    className="text-[25px] w-[18rem]"
+                  >
+                    {feature[language].title}
+                  </h2>
+                  <p
+                    dir={language === "ar" ? "rtl" : "ltr"}
+                    className="text-[18px] text-[#D9D9D9] w-[18rem] "
+                  >
                     {feature[language].description}
                   </p>
                 </div>
