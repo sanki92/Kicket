@@ -52,7 +52,7 @@ const Service2 = () => {
       },
     },
   ]);
-  
+
   const { language } = useLanguage();
 
   const fetchService = async () => {
@@ -79,9 +79,9 @@ const Service2 = () => {
     try {
       const response = await axiosConfig.get("/api/features/2");
       console.log("service 1 keyfeature", response);
-      const data = response.data.map((e,i) => ({
+      const data = response.data.map((e, i) => ({
         image: e.image,
-        number: i+1,
+        number: i + 1,
         en: {
           title: e.title,
           description: e.description,
@@ -246,13 +246,13 @@ const Service2 = () => {
                 <div key={feature.number} className="text-white">
                   <h2
                     dir={language === "ar" ? "rtl" : "ltr"}
-                    className="text-[25px] mb-2 w-[18rem]"
+                    className="text-[25px] mb-2 w-[18rem] mgM:text-[2.9vw]"
                   >
                     {feature[language].title}
                   </h2>
                   <p
                     dir={language === "ar" ? "rtl" : "ltr"}
-                    className="text-[18px] text-[#D9D9D9] w-[18rem]"
+                    className="text-[18px] text-[#D9D9D9] w-[18rem] mgM:text-[2.6vw]"
                   >
                     {feature[language].description}
                   </p>
@@ -287,13 +287,13 @@ const Service2 = () => {
                   </h1>
                   <h2
                     dir={language === "ar" ? "rtl" : "ltr"}
-                    className="text-[25px] w-[18rem]"
+                    className="text-[25px] w-[18rem] mgM:text-[2.9vw]"
                   >
                     {feature[language].title}
                   </h2>
                   <p
                     dir={language === "ar" ? "rtl" : "ltr"}
-                    className="text-[18px] text-[#D9D9D9] w-[18rem] "
+                    className="text-[18px] text-[#D9D9D9] w-[18rem] mgM:text-[2.6vw] "
                   >
                     {feature[language].description}
                   </p>
@@ -304,8 +304,12 @@ const Service2 = () => {
         </Slider>
       </div>
 
-      <Stories isPhone={isPhone} title={"Case Studies"} dir={"case-studies"} data={caseStudies} />
-    
+      <Stories
+        isPhone={isPhone}
+        title={"Case Studies"}
+        dir={"case-studies"}
+        data={caseStudies}
+      />
     </Layout>
   );
 };

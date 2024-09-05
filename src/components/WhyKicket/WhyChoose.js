@@ -29,12 +29,12 @@ export default function AccordionUsage({ data }) {
             id="panel1-header"
             className={`${
               expanded === "panel1" ? "text-yellow-400" : "text-white"
-            }`}
+            } mgM:text-[2.9vw]`}
           >
             {e[language].title}
           </AccordionSummary>
 
-          <AccordionDetails>
+          <AccordionDetails className="mgM:text-[2.7vw] ">
             {e[language].description}
             <div className="absolute left-0 top-0 h-full w-[3px] bg-gradient-to-b from-[#ffc019] via-[#ed4c75] via-[#973eff] to-[#00d6cc]"></div>
           </AccordionDetails>
