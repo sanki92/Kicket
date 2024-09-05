@@ -245,9 +245,8 @@ const Service1 = () => {
               {feature.number % 2 === 1 ? (
                 <div key={feature.number} className="text-white">
                   <h2
-                    style={{ textAlign: "left" }}
                     dir={language === "ar" ? "rtl" : "ltr"}
-                    className="text-[25px] mb-2"
+                    className="text-[25px] mb-2 w-[18rem]"
                   >
                     {feature[language].title}
                   </h2>
@@ -286,8 +285,16 @@ const Service1 = () => {
                     {feature.number}
                     <div className="absolute right-0 top-0 h-full w-[4px] bg-gradient-to-b from-[#ffc019] via-[#ed4c75] via-[#973eff] to-[#00d6cc]"></div>
                   </h1>
-                  <h2 className="text-[25px] ">{feature[language].title}</h2>
-                  <p className="text-[18px] text-[#D9D9D9] w-[18rem] ">
+                  <h2
+                    dir={language === "ar" ? "rtl" : "ltr"}
+                    className="text-[25px] w-[18rem]"
+                  >
+                    {feature[language].title}
+                  </h2>
+                  <p
+                    dir={language === "ar" ? "rtl" : "ltr"}
+                    className="text-[18px] text-[#D9D9D9] w-[18rem] "
+                  >
                     {feature[language].description}
                   </p>
                 </div>
