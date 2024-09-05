@@ -305,7 +305,7 @@ const Service2 = () => {
       </div>
 
       <Stories isPhone={isPhone} title={"Case Studies"} dir={"case-studies"} data={caseStudies} />
-      <Experience />
+    
     </Layout>
   );
 };

@@ -169,7 +169,7 @@ const WhyKicket = () => {
           </div>
         </div>
 
-        <Experience />
+      
       </div>
     </Layout>
   );

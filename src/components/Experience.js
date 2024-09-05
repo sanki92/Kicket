@@ -3,7 +3,7 @@ import bgImg from "../assets/experience.png";
 import phones2 from "../assets/2phone.png";
 import { useLanguage } from "./LanguageContext";
 
-const Experience = () => {
+const Experience = ({setRequestDemo}) => {
   const { language } = useLanguage();
   return (
     <div className="my-[5rem] smM:mt-[2rem] flex justify-center items-center h-[30rem] smM:h-[15rem]">
@@ -30,7 +30,7 @@ const Experience = () => {
               : `Request Your Demo Today`}
             
           </h1>
-          <button className="py-4 px-[3rem] smM:py-2 smM:px-[2rem] smM:text-[3.5vw] smM:leading-[6vw] rounded-[50px] text-xl bg-gradient-to-r from-[#ED4C75] to-[#973EFF] text-white">
+          <button onClick={()=>setRequestDemo(true)} className="py-4 px-[3rem] smM:py-2 smM:px-[2rem] smM:text-[3.5vw] smM:leading-[6vw] rounded-[50px] text-xl bg-gradient-to-r from-[#ED4C75] to-[#973EFF] text-white">
             {language === "ar" ? "اطلب العرض التوضيحي" : "Request for Demo"}
           </button>
         </div>

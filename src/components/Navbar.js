@@ -6,10 +6,9 @@ import { RxCross2 } from "react-icons/rx";
 import RequestDemo from "./RequestDemo";
 import { useLanguage } from "../components/LanguageContext";
 
-const Navbar = () => {
+const Navbar = ({requestDemo, setRequestDemo}) => {
   const { language } = useLanguage(); // Get the current language from context
   const [open, setOpen] = useState(false);
-  const [requestDemo, setRequestDemo] = useState(false);
 
   // Hardcoded translations for navbar links and Request a Demo button
   const translations = {

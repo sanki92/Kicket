@@ -116,7 +116,7 @@ const Contact = () => {
         </div>
       </div>
 
-      <Experience />
+   
     </Layout>
   );
 };
