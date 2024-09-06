@@ -5,7 +5,7 @@ import footerBg from "../assets/footerbg.png";
 import { useLanguage } from "./LanguageContext";
 
 const Footer = () => {
-  const {language} = useLanguage();
+  const { language } = useLanguage();
   return (
     <div className="relative flex">
       <img src={footerBg} className="absolute bottom-0 right-0" />
@@ -38,8 +38,8 @@ const Footer = () => {
             <ul className="text-[15px] space-y-1">
               <li>{language === "ar" ? "الصفحة الرئيسية" : "Home"}</li>
               <li>{language === "ar" ? "من نحن" : "About Us"}</li>
-              <li>{language === "ar" ? "الخدمة 1" : "Service 1"}</li>
-              <li>{language === "ar" ? "الخدمة 2" : "Service 2"}</li>
+              <li>{language === "ar" ? "الخدمة" : "Accreditation"}</li>
+              <li>{language === "ar" ? "الخدمة " : "Registration"}</li>
               <li>{language === "ar" ? "اتصل بنا" : "Contact Us"}</li>
             </ul>
           </div>
