@@ -68,6 +68,12 @@ const SliderComponent = ({ serviceSnippet }) => {
                   >
                     {e[language].title}
                   </h3>
+                  <h3
+                    dir={language === "ar" ? "rtl" : "ltr"}
+                    className="text-[25px] mb-5 smM:text-[3.1vw] smM:leading-[4vw] w-[60%]"
+                  >
+                    {e[language].sub_title}
+                  </h3>
                   <p
                     dir={language === "ar" ? "rtl" : "ltr"}
                     className="text-xl leading-[35px] w-[60%] smM:w-full smM:text-[4vw] smM:leading-[6vw]"

@@ -85,11 +85,13 @@ const LandingPage = () => {
       const data = response.data.map((e) => ({
         image: e.image,
         en: {
-          title: e.title,
+          title: e.service.title,
+          sub_title: e.title,
           description: e.description,
         },
         ar: {
-          title: e.arabic_title,
+          title: e.service.arabic_title,
+          sub_title: e.arabic_title,
           description: e.arabic_description,
         },
       }));
