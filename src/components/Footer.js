@@ -3,12 +3,13 @@ import logo from "../assets/logo.png";
 import icons from "../assets/footerIcons.png";
 import footerBg from "../assets/footerbg.png";
 import { useLanguage } from "./LanguageContext";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   const { language } = useLanguage();
   return (
     <div className="relative flex">
-      <img src={footerBg} className="absolute bottom-0 right-0" />
+      <img src={footerBg} className="absolute bottom-0 right-0 -z-10" />
       <div className="flex flex-col items-center justify-between w-[80%] smM:w-[85%] mx-auto">
         <div
           className={`grid grid-cols-3 smM:grid-cols-4 h-full gap-x-20 w-full text-white ${
@@ -35,12 +36,12 @@ const Footer = () => {
             <h1 className="text-[18px] mb-2">
               {language === "ar" ? "روابط الحساب" : "Account Link"}
             </h1>
-            <ul className="text-[15px] space-y-1">
-              <li>{language === "ar" ? "الصفحة الرئيسية" : "Home"}</li>
-              <li>{language === "ar" ? "من نحن" : "About Us"}</li>
-              <li>{language === "ar" ? "الخدمة" : "Accreditation"}</li>
-              <li>{language === "ar" ? "الخدمة " : "Registration"}</li>
-              <li>{language === "ar" ? "اتصل بنا" : "Contact Us"}</li>
+            <ul className="text-[15px] space-y-1 flex flex-col">
+              <Link to={"/"}>{language === "ar" ? "الصفحة الرئيسية" : "Home"}</Link>
+              <Link to={"/why-kicket"}>{language === "ar" ? "من نحن" : "About Us"}</Link>
+              <Link to={"/accreditation"}>{language === "ar" ? "الخدمة" : "Accreditation"}</Link>
+              <Link to={"/registration"}>{language === "ar" ? "الخدمة " : "Registration"}</Link>
+              <Link to={"/contact"}>{language === "ar" ? "اتصل بنا" : "Contact Us"}</Link>
             </ul>
           </div>
           <div className="smM:col-span-2">
@@ -60,8 +61,9 @@ const Footer = () => {
         <div className="text-white text-[14px] py-8 w-full h-[20%] flex items-center justify-center smM:text-center">
           <p>
             {language === "ar"
-              ? "حقوق الطبع والنشر © Kicket | جميع الحقوق محفوظة | تصميم Web Prism Dynamics"
-              : "Copyright © Kicket | All Rights Reserved | Designed By Web Prism Dynamics"}
+              ? "حقوق الطبع والنشر © Kicket | جميع الحقوق محفوظة | تصميم"
+              : "Copyright © Kicket | All Rights Reserved | Designed By"}
+             {" "} <a href="https://webprismits.com/" target="_blank" className="underline z-10 ">Web Prism Dynamics</a>
           </p>
         </div>
       </div>
