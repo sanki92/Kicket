@@ -63,11 +63,11 @@ const Service1 = () => {
         image: response.data.main_image,
         en: {
           title: response.data.title,
-          description: response.data.description,
+          description: response.data.long_description,
         },
         ar: {
           title: response.data.arabic_title,
-          description: response.data.arabic_description,
+          description: response.data.arabic_long_description,
         },
       };
       setData(tempData);

@@ -134,11 +134,11 @@ const LandingPage = () => {
         image: e.main_image,
         en: {
           title: e.title,
-          description: e.description,
+          description: e.short_description,
         },
         ar: {
           title: e.arabic_title,
-          description: e.arabic_description,
+          description: e.arabic_short_description,
         },
       }));
       console.log("Data:", data);
